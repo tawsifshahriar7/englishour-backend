@@ -15,6 +15,11 @@ const Moderator = db.define("moderator", {
     type: db.Sequelize.STRING,
     allowNull: false,
   },
+  isAdmin: {
+    type: db.Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
   first_name: {
     type: db.Sequelize.STRING,
     allowNull: true,
@@ -40,6 +45,10 @@ const Moderator = db.define("moderator", {
     allowNull: true,
   },
   profile_picture: {
+    type: db.Sequelize.STRING,
+    allowNull: true,
+  },
+  token: {
     type: db.Sequelize.STRING,
     allowNull: true,
   },
