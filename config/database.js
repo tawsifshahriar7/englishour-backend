@@ -4,12 +4,7 @@ const { POSTGRES_URI } = process.env;
 
 module.exports = new Sequelize(POSTGRES_URI, {
   dialect: "postgres",
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
+  dialectOptions: {},
   pool: {
     max: 5,
     min: 0,
