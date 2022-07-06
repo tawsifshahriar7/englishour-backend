@@ -4,7 +4,7 @@ const ProfileNotificationStatus = db.define("profile_notification_status", {
   notification_id: {
     type: db.Sequelize.INTEGER,
     primaryKey: true,
-    autoIncrement: true,
+    //autoIncrement: true,
     references: {
       model: "profile_notification",
       key: "notification_id",
@@ -16,7 +16,7 @@ const ProfileNotificationStatus = db.define("profile_notification_status", {
   profile_id: {
     type: db.Sequelize.INTEGER,
     primaryKey: true,
-    autoIncrement: true,
+    //autoIncrement: true,
     references: {
       model: "profile",
       key: "profile_id",
