@@ -28,7 +28,6 @@ const Category = require("./model/category");
 const AttemptHistory = require("./model/history");
 const Words = require("./model/words");
 
-
 const db = require("./config/database");
 
 db.authenticate()
