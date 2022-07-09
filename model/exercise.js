@@ -22,6 +22,11 @@ const Exercise = db.define(
       allowNull: false,
       defaultValue: "pending",
     },
+    description: {
+      type: db.Sequelize.STRING,
+      allowNull: false,
+      defaultValue: "",
+    },
     moderator_id: {
       type: db.Sequelize.INTEGER,
       allowNull: false,
