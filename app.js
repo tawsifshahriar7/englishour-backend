@@ -1,12 +1,25 @@
 const express = require("express");
 require("dotenv").config();
+const cors = require("cors");
 // const User = require("./model/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const auth = require("./middleware/auth");
+const moderatorRouters = require("./routes/moderator");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
+app.use(moderatorRouters);
+
+app.use(( err, req, res, next ) => {
+    res.locals.error = err;
+    if (err.status >= 100 && err.status < 600)
+      res.status(err.status);
+    else
+      res.status(500);
+    res.render('error');
+});
 //Register
 // app.post("/register", async (req, res) => {
 //   try {
