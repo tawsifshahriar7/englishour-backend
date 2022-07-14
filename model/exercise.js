@@ -8,10 +8,9 @@ const Exercise = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    type: {
+    exercise_type: {
       type: db.Sequelize.STRING,
       allowNull: false,
-      unique: true,
     },
     level: {
       type: db.Sequelize.INTEGER,
