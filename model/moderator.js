@@ -8,6 +8,11 @@ const Moderator = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    mobile: {
+      type: db.Sequelize.INTEGER,
+      allowNull: true,
+      unique: true,
+    },
     email: {
       type: db.Sequelize.STRING,
       allowNull: false,

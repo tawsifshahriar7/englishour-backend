@@ -47,12 +47,13 @@ const insert = async (req, res) => {
                 })
                 .then((result) => {
                     console.log(result);
-                    return res.status(status_codes.ERROR).send(err);
+                    return res.status(status_codes.SUCCESS).send(result);
                 })
                 .catch((err) => {
                     console.log(err);
                     return res.status(status_codes.ERROR).send(err);
                 });
+                return res.status(status_codes.SUCCESS).send(result);
             })
             .catch((err) => {
                 console.log(err);
