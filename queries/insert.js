@@ -31,7 +31,7 @@ const insert = async (req, res) => {
             approval_status: "pending",
             description: description,
             moderator_id: moderator_id,
-            topic_id: topic,
+            topic_name: topic,
       })
       .then((result_exercise) => {
         console.log("In exercise then"+result_exercise);
@@ -90,7 +90,7 @@ const insert = async (req, res) => {
             approval_status: "pending",
             description: description,
             moderator_id: moderator_id,
-            topic_id: topic,
+            topic_name: topic,
       })
       .then((result_exercise) => {
         console.log("In exercise then"+result_exercise);
