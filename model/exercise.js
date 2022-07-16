@@ -8,7 +8,7 @@ const Exercise = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    exercise_type: {
+    type: {
       type: db.Sequelize.STRING,
       allowNull: false,
     },
@@ -39,7 +39,7 @@ const Exercise = db.define(
     },
     topic_name: {
       type: db.Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "topic",
         key: "topic_name",
