@@ -1,6 +1,7 @@
 const { json } = require("express/lib/response");
 const status_codes = require("../utils/status_code/status_code");
 const Moderator = require("../model/moderator");
+const bcrypt = require("bcryptjs");
 
 const insertProfile = async (req, res) => {
     console.log(req.body);
@@ -13,7 +14,7 @@ const insertProfile = async (req, res) => {
         email: req.body.email,
         mobile: req.body.mobile,
         designation: req.body.designation,
-        password: req.body.password,
+        password: await bcrypt.hash(req.body.password, 10),
         joinDate: req.body.join_date,
         institution: req.body.current_institute,
         profile_picture: req.body.profileImgUrl,
