@@ -7,6 +7,7 @@ const userLogin = require("../queries/userLogin");
 const createProfile = require("../queries/createProfile");
 const profileInfo = require("../queries/userProfile");
 const letterchange = require("../queries/letterchange");
+const sentenceshuffle = require("../queries/sentenceshuffle");
 
 router.get("/user/info", auth, (req, res) => {
   userInfo(req, res);
@@ -25,5 +26,8 @@ router.get("/user/profile", (req, res) => {
 });
 router.get("/user/letterchange", (req, res) => {
   letterchange(req, res);
+});
+router.get("/user/sentenceshuffle", (req, res) => {
+  sentenceshuffle(req, res);
 });
 module.exports = router;
