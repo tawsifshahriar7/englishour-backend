@@ -3,6 +3,7 @@ const app = require("./app");
 const server = http.createServer(app);
 
 const db = require("./config/database");
+const Exercise = require("./model/exercise");
 
 db.authenticate()
   .then(() => {
