@@ -11,7 +11,7 @@ const Profile = db.define(
     username: {
       type: db.Sequelize.STRING,
       allowNull: false,
-      unique: true,
+      unique: false,
       references: {
         model: "users",
         key: "username",
