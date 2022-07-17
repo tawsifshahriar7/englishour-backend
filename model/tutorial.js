@@ -8,6 +8,11 @@ const Tutorial = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    tutorial_title: {
+      type: db.Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+    },
     content: {
       type: db.Sequelize.STRING,
       allowNull: false,
@@ -29,7 +34,7 @@ const Tutorial = db.define(
         hooks: true,
       },
     },
-    topic_id: {
+    topic_name: {
       type: db.Sequelize.INTEGER,
       allowNull: false,
       references: {

@@ -8,7 +8,6 @@ const profileInfo = async (req, res) => {
         where: {moderator_id: moderator_id},
     });
     console.log(moderator);
-    let profileDetails = [];
     return res.status(status_codes.SUCCESS).send(moderator);
 };
 

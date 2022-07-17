@@ -37,12 +37,12 @@ const Exercise = db.define(
         hooks: true,
       },
     },
-    topic_name: {
+    tutorial_title: {
       type: db.Sequelize.STRING,
       allowNull: true,
       references: {
-        model: "topic",
-        key: "topic_name",
+        model: "tutorial",
+        key: "tutorial_title",
         onDelete: "cascade",
         onUpdate: "cascade",
         hooks: true,
