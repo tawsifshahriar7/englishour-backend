@@ -19,10 +19,6 @@ const SentenceShuffle = db.define(
       type: db.Sequelize.STRING,
       allowNull: false,
     },
-    shuffled_sentence: {
-      type: db.Sequelize.STRING,
-      allowNull: false,
-    },
   },
   {
     timestamps: false,
