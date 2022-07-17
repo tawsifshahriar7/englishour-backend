@@ -9,9 +9,7 @@ const createProfile = async (req, res) => {
     last_name: req.body.lastName,
     dateofBirth: req.body.dateofBirth,
     institution: req.body.institution,
-    class: req.body.class,
-    profile_picture: req.body.profile_picture,
-    current_level: req.body.current_level,
+    // class: req.body.class,
   })
     .then((result) => {
       console.log(result);

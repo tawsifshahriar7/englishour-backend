@@ -9,6 +9,7 @@ const profileInfo = require("../queries/userProfile");
 const letterchange = require("../queries/letterchange");
 const sentenceshuffle = require("../queries/sentenceshuffle");
 const submitExercise = require("../queries/submitExercise");
+const getProfiles = require("../queries/getProfiles");
 
 router.get("/user/info", auth, (req, res) => {
   userInfo(req, res);
@@ -33,5 +34,8 @@ router.get("/user/sentenceshuffle", (req, res) => {
 });
 router.post("/user/submitExercise", (req, res) => {
   submitExercise(req, res);
+});
+router.get("/user/getProfiles", (req, res) => {
+  getProfiles(req, res);
 });
 module.exports = router;

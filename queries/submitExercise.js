@@ -21,7 +21,7 @@ const verify = async (req, res) => {
   });
   if (exercise === null) {
     return res.status(status_codes.NOT_FOUND).send("Exercise not found");
-  } else if (exercise.dataValues.type === "changeletter") {
+  } else if (exercise.dataValues.exercise_type === "changeletter") {
     let result = [];
     for (let i = 0; i < items.length; i++) {
       let letterchange = await LetterChange.findAll({
@@ -37,7 +37,7 @@ const verify = async (req, res) => {
       }
     }
     return res.status(status_codes.SUCCESS).send(result);
-  } else if (exercise.dataValues.type === "sentenceshuffling") {
+  } else if (exercise.dataValues.exercise_type === "sentenceshuffling") {
     let result = [];
     for (let i = 0; i < items.length; i++) {
       let sentenceshuffle = await SentenceShuffle.findAll({
