@@ -4,7 +4,7 @@ const status_codes = require("../utils/status_code/status_code");
 
 const exerciseInfo = async (req, res) => {
     let moderator_id = parseInt(req.query.moderator_id);
-    console.log(moderator_id);
+    console.log("backend: "+moderator_id);
     let exercises = await Exercise.findAll({
         where: {moderator_id: moderator_id},
     });

@@ -25,7 +25,7 @@ const login = async (req, res) => {
             }
           );
           // save user token
-          console.log(token)
+          // console.log(token)
           moderator.token = token;
           // user
           return res.status(200).json(token);

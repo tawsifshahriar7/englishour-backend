@@ -7,7 +7,7 @@ const profileInfo = async (req, res) => {
     let moderator = await Moderator.findOne({
         where: {moderator_id: moderator_id},
     });
-    //console.log(moderator.designation);
+    console.log(moderator);
     let profileDetails = [];
     return res.status(status_codes.SUCCESS).send(moderator);
 };
