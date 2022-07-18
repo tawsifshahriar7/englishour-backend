@@ -8,7 +8,7 @@ const ChangeLetter = require("../model/letterchange");
 const insert = async (req, res) => {
     let type = req.body.type;
     let level = req.body.level;
-    let topic = req.body.topic;
+    let tutorial_title = req.body.tutorial_title;
     let moderator_id = req.body.moderator_id;
     let description = req.body.description;
 
@@ -16,11 +16,9 @@ const insert = async (req, res) => {
 
     if(type==="sentenceshuffling"){
         let correct = req.body.correct;
-        let shuffled = req.body.shuffled;
 
 
         let correctSentences = correct.split("#");
-        let shuffledSentences = shuffled.split("#");
 
         let length = ((correctSentences.length)-1);
 
@@ -31,7 +29,7 @@ const insert = async (req, res) => {
             approval_status: "pending",
             description: description,
             moderator_id: moderator_id,
-            topic_name: topic,
+            tutorial_title: tutorial_title,
       })
       .then((result_exercise) => {
         console.log("In exercise then"+result_exercise);
@@ -47,7 +45,6 @@ const insert = async (req, res) => {
                 SentenceShuffle.create({
                     item_id: item_id_reference,
                     correct_sentence: correctSentences[i],
-                    shuffled_sentence: shuffledSentences[i],
                 })
                 .then((result_shuffle) => {
                     console.log(result_shuffle);
@@ -90,7 +87,7 @@ const insert = async (req, res) => {
             approval_status: "pending",
             description: description,
             moderator_id: moderator_id,
-            topic_name: topic,
+            tutorial_title: tutorial_title,
       })
       .then((result_exercise) => {
         console.log("In exercise then"+result_exercise);
