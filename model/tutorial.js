@@ -35,11 +35,11 @@ const Tutorial = db.define(
       },
     },
     topic_name: {
-      type: db.Sequelize.INTEGER,
+      type: db.Sequelize.STRING,
       allowNull: false,
       references: {
         model: "topic",
-        key: "topic_id",
+        key: "topic_name",
         onDelete: "cascade",
         onUpdate: "cascade",
         hooks: true,
