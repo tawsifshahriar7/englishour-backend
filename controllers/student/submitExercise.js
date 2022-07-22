@@ -1,9 +1,9 @@
 const { json } = require("express/lib/response");
-const status_codes = require("../utils/status_code/status_code");
-const Exercise = require("../model/exercise");
-const Item = require("../model/item");
-const LetterChange = require("../model/letterchange");
-const SentenceShuffle = require("../model/sentenceshuffle");
+const status_codes = require("../../utils/status_code/status_code");
+const Exercise = require("../../model/exercise");
+const Item = require("../../model/item");
+const LetterChange = require("../../model/letterchange");
+const SentenceShuffle = require("../../model/sentenceshuffle");
 
 const verify = async (req, res) => {
   let { exercise_id, submitted_answer } = req.body;

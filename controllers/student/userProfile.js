@@ -1,6 +1,6 @@
 const { json } = require("express/lib/response");
-const Profile = require("../model/profile");
-const status_codes = require("../utils/status_code/status_code");
+const Profile = require("../../model/profile");
+const status_codes = require("../../utils/status_code/status_code");
 
 const profileInfo = async (req, res) => {
   let profile_id = parseInt(req.query.profile_id);

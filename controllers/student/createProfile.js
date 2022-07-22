@@ -1,6 +1,6 @@
 const { json } = require("express/lib/response");
-const status_codes = require("../utils/status_code/status_code");
-const Profile = require("../model/profile");
+const status_codes = require("../../utils/status_code/status_code");
+const Profile = require("../../model/profile");
 
 const createProfile = async (req, res) => {
   await Profile.create({

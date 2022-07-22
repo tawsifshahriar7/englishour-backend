@@ -1,6 +1,6 @@
 const { json } = require("express/lib/response");
-const User = require("../model/user");
-const status_codes = require("../utils/status_code/status_code");
+const User = require("../../model/user");
+const status_codes = require("../../utils/status_code/status_code");
 
 const userInfo = async (req, res) => {
   let user_id = req.query.username;
