@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
-const userInfo = require("../queries/user");
-const userRegister = require("../queries/userRegister");
-const userLogin = require("../queries/userLogin");
-const createProfile = require("../queries/createProfile");
-const profileInfo = require("../queries/userProfile");
-const letterchange = require("../queries/letterchange");
-const sentenceshuffle = require("../queries/sentenceshuffle");
-const submitExercise = require("../queries/submitExercise");
-const getProfiles = require("../queries/getProfiles");
+const userInfo = require("../controllers/student/user");
+const userRegister = require("../controllers/student/userRegister");
+const userLogin = require("../controllers/student/userLogin");
+const createProfile = require("../controllers/student/createProfile");
+const profileInfo = require("../controllers/student/userProfile");
+const letterchange = require("../controllers/student/letterchange");
+const sentenceshuffle = require("../controllers/student/sentenceshuffle");
+const submitExercise = require("../controllers/student/submitExercise");
+const getProfiles = require("../controllers/student/getProfiles");
 
 router.get("/user/info", auth, (req, res) => {
   userInfo(req, res);

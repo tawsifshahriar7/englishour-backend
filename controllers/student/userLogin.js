@@ -1,8 +1,8 @@
 const { json } = require("express/lib/response");
-const status_codes = require("../utils/status_code/status_code");
+const status_codes = require("../../utils/status_code/status_code");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../model/user");
+const User = require("../../model/user");
 
 const login = async (req, res) => {
   try {

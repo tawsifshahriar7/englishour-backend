@@ -1,7 +1,7 @@
 const { json } = require("express/lib/response");
-const status_codes = require("../utils/status_code/status_code");
-const Item = require("../model/item");
-const SentenceShuffle = require("../model/sentenceshuffle");
+const status_codes = require("../../utils/status_code/status_code");
+const Item = require("../../model/item");
+const SentenceShuffle = require("../../model/sentenceshuffle");
 
 const sentenceshuffle = async (req, res) => {
   let exercise_id = parseInt(req.query.exercise_id);

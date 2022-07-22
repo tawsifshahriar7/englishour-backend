@@ -1,15 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
-const insert = require("../queries/insert");
-const insertProfile = require("../queries/insertProfile");
-const profileInfo = require("../queries/profileInfo");
-const exerciseInfo = require("../queries/exerciseInfo");
-const moderatorLogin = require("../queries/moderatorLogin");
-const CategoryDetails = require("../queries/getCategory");
-const TopicDetails = require("../queries/getTopic");
-const TutorialDetails = require("../queries/getTutorial");
-const AddTutorial = require("../queries/addTutorial");
+
+
+const insert = require("../controllers/insert");
+const insertProfile = require("../controllers/insertProfile");
+const profileInfo = require("../controllers/profileInfo");
+const exerciseInfo = require("../controllers/exerciseInfo");
+const moderatorLogin = require("../controllers/moderatorLogin");
+const CategoryDetails = require("../controllers/getCategory");
+const TopicDetails = require("../controllers/getTopic");
+const TutorialDetails = require("../controllers/getTutorial");
+const AddTutorial = require("../controllers/addTutorial");
 
 router.post("/moderator/insert", auth, insert);
 router.post("/moderator/insertProfile", auth, insertProfile);
