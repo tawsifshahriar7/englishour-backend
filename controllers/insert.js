@@ -8,7 +8,7 @@ const ChangeLetter = require("../model/letterchange");
 const insert = async (req, res) => {
     let type = req.body.type;
     let level = req.body.level;
-    let tutorial_title = req.body.tutorial_title;
+    let tutorial_id = req.body.tutorial_id;
     let moderator_id = req.body.moderator_id;
     let description = req.body.description;
 
@@ -29,7 +29,7 @@ const insert = async (req, res) => {
             approval_status: "pending",
             description: description,
             moderator_id: moderator_id,
-            tutorial_title: tutorial_title,
+            tutorial_id: tutorial_id,
       })
       .then((result_exercise) => {
         console.log("In exercise then"+result_exercise);
@@ -87,7 +87,7 @@ const insert = async (req, res) => {
             approval_status: "pending",
             description: description,
             moderator_id: moderator_id,
-            tutorial_title: tutorial_title,
+            tutorial_id: tutorial_id,
       })
       .then((result_exercise) => {
         console.log("In exercise then"+result_exercise);

@@ -5,7 +5,7 @@ const status_codes = require("../utils/status_code/status_code");
 const TutorialDetails = async (req, res) => {
   let tutorialDetails = [];
   let tunorials = await Tutorial.findAll({
-     where: { topic_name: req.query.topic_name },
+     where: { topic_id: req.query.topic_id },
   });
   for(let tutorial of tunorials){
     tutorialDetails.push(tutorial.dataValues);
