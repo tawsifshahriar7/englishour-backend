@@ -37,17 +37,32 @@ const Exercise = db.define(
         hooks: true,
       },
     },
-    tutorial_title: {
-      type: db.Sequelize.STRING,
+    // tutorial_title: {
+    //   type: db.Sequelize.STRING,
+    //   allowNull: false,
+    //   references: {
+    //     model: "tutorial",
+    //     key: "tutorial_title",
+    //     onDelete: "cascade",
+    //     onUpdate: "cascade",
+    //     hooks: true,
+    //   },
+    // },
+
+
+    tutorial_id: {
+      type: db.Sequelize.INTEGER,
       allowNull: false,
-      references: {
+      references:
+      {
         model: "tutorial",
-        key: "tutorial_title",
+        key: "tutorial_id",
         onDelete: "cascade",
         onUpdate: "cascade",
         hooks: true,
       },
     },
+    
   },
   {
     timestamp: false,

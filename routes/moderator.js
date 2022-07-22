@@ -9,6 +9,7 @@ const moderatorLogin = require("../queries/moderatorLogin");
 const CategoryDetails = require("../queries/getCategory");
 const TopicDetails = require("../queries/getTopic");
 const TutorialDetails = require("../queries/getTutorial");
+const AddTutorial = require("../queries/addTutorial");
 
 router.post("/moderator/insert", auth, insert);
 router.post("/moderator/insertProfile", auth, insertProfile);
@@ -18,5 +19,6 @@ router.post("/moderator/login", moderatorLogin);
 router.get("/moderator/categoryDetails", auth, CategoryDetails);
 router.get("/moderator/topicDetails", auth, TopicDetails);
 router.get("/moderator/tutorialDetails", auth, TutorialDetails);
+router.post("/moderator/addTutorial", auth, AddTutorial);
 
 module.exports = router;
