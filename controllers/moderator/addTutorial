@@ -1,8 +1,8 @@
 const { json } = require("express/lib/response");
-const status_codes = require("../utils/status_code/status_code");
-const Tutorial = require("../model/tutorial");
-const Topic = require("../model/topic");
-const Moderator = require("../model/moderator");
+const status_codes = require("../../utils/status_code/status_code");
+const Tutorial = require("../../model/tutorial");
+const Topic = require("../../model/topic");
+const Moderator = require("../../model/moderator");
 
 const addTutorial = async (req, res) => {
     console.log(req.body);

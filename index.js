@@ -33,7 +33,7 @@ db.authenticate()
   .catch((err) => {
     console.log("Error: " + err);
   });
-db.sync({ logging: console.log, force: false })
+db.sync({ logging: console.log, alter: true })
   .then(() => {
     console.log("Database synced");
   })
