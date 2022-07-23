@@ -3,7 +3,7 @@ const Profile = require("../../model/profile");
 const status_codes = require("../../utils/status_code/status_code");
 
 const profiles = async (req, res) => {
-  let username = req.query.username;
+  let username = req.user.username;
   let profile = await Profile.findAll({
     where: { username: username },
   });
