@@ -51,8 +51,8 @@ const addTutorial = async (req, res) => {
     //commit to database
     await tutorial.save();
     console.log("tutorial created");
-
-    return res.status(status_codes.SUCCESS).send("Tutorial added successfully");
+    console.log(tutorial.dataValues.tutorial_id);
+    return res.status(status_codes.SUCCESS).send(tutorial);
 };
 
 module.exports = addTutorial;
