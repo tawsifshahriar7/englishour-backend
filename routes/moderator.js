@@ -11,6 +11,8 @@ const CategoryDetails = require("../controllers/moderator/getCategory");
 const TopicDetails = require("../controllers/moderator/getTopic");
 const TutorialDetails = require("../controllers/moderator/getTutorial");
 const AddTutorial = require("../controllers/moderator/addTutorial");
+const TutorialInfo = require("../controllers/moderator/tutorialInfo");
+const UpdatePassword = require("../controllers/moderator/updatePassword");
 
 router.post("/moderator/insert", auth, insert);
 router.post("/moderator/insertProfile", auth, insertProfile);
@@ -21,5 +23,7 @@ router.get("/moderator/categoryDetails", auth, CategoryDetails);
 router.get("/moderator/topicDetails", auth, TopicDetails);
 router.get("/moderator/tutorialDetails", auth, TutorialDetails);
 router.post("/moderator/addTutorial", auth, AddTutorial);
+router.get("/moderator/tutorialInfo/moderator_id", auth, TutorialInfo);
+router.post("/moderator/updatePassword", auth, UpdatePassword);
 
 module.exports = router;
