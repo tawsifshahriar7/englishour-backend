@@ -94,13 +94,65 @@ const verify = async (req, res) => {
         },
       });
       submitted_answer[i] = submitted_answer[i].toLowerCase();
+      let response = {};
+      response.correct_sentence =
+        sentenceshuffle[0].dataValues.correct_sentence;
+      let history = await History.findOne({
+        where: {
+          item_id: items[i].dataValues.item_id,
+          profile_id: req.profile.profile_id,
+        },
+      });
       if (
         sentenceshuffle[0].dataValues.correct_sentence === submitted_answer[i]
       ) {
-        result.push(true);
+        response.result = true;
+        if (history === null) {
+          await History.create({
+            item_id: items[i].dataValues.item_id,
+            profile_id: req.profile.profile_id,
+            status: "solved",
+            nattempts: 1,
+          });
+        } else {
+          await History.update(
+            {
+              status: "solved",
+              nattempts: history.dataValues.nattempts + 1,
+            },
+            {
+              where: {
+                item_id: items[i].dataValues.item_id,
+                profile_id: req.profile.profile_id,
+              },
+            }
+          );
+        }
       } else {
-        result.push(false);
+        response.result = false;
+        if (history === null) {
+          await History.create({
+            item_id: items[i].dataValues.item_id,
+            profile_id: req.profile.profile_id,
+            status: "failed",
+            nattempts: 1,
+          });
+        } else {
+          await History.update(
+            {
+              status: "failed",
+              nattempts: history.dataValues.nattempts + 1,
+            },
+            {
+              where: {
+                item_id: items[i].dataValues.item_id,
+                profile_id: req.profile.profile_id,
+              },
+            }
+          );
+        }
       }
+      result.push(response);
     }
     return res.status(status_codes.SUCCESS).send(result);
   }

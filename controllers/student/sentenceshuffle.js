@@ -2,6 +2,7 @@ const { json } = require("express/lib/response");
 const status_codes = require("../../utils/status_code/status_code");
 const Item = require("../../model/item");
 const SentenceShuffle = require("../../model/sentenceshuffle");
+var shuffle = require("shuffle-words");
 
 const sentenceshuffle = async (req, res) => {
   let exercise_id = parseInt(req.query.exercise_id);
@@ -17,7 +18,12 @@ const sentenceshuffle = async (req, res) => {
         item_id: items[i].dataValues.item_id,
       },
     });
-    sentenceshuffles.push(sentenceshuffle);
+    let data = {};
+    data.item_id = items[i].dataValues.item_id;
+    data.shuffled_sentence = shuffle(
+      sentenceshuffle[0].dataValues.correct_sentence
+    );
+    sentenceshuffles.push(data);
   }
   return res.status(status_codes.SUCCESS).send(sentenceshuffles);
 };
