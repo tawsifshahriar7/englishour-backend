@@ -13,6 +13,7 @@ const TutorialDetails = require("../controllers/moderator/getTutorial");
 const AddTutorial = require("../controllers/moderator/addTutorial");
 const TutorialInfo = require("../controllers/moderator/tutorialInfo");
 const UpdatePassword = require("../controllers/moderator/updatePassword");
+const ForgotPassword = require("../controllers/moderator/forgotPassword");
 
 router.post("/moderator/insert", auth, insert);
 router.post("/moderator/insertProfile", auth, insertProfile);
@@ -25,5 +26,6 @@ router.get("/moderator/tutorialDetails", auth, TutorialDetails);
 router.post("/moderator/addTutorial", auth, AddTutorial);
 router.get("/moderator/tutorialInfo/moderator_id", auth, TutorialInfo);
 router.post("/moderator/updatePassword", auth, UpdatePassword);
+router.post("/moderator/forgotPassword", ForgotPassword);
 
 module.exports = router;
