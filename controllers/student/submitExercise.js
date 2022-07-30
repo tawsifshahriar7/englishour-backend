@@ -8,7 +8,6 @@ const SentenceShuffle = require("../../model/sentenceshuffle");
 const verify = async (req, res) => {
   let { exercise_id, submitted_answer } = req.body;
   exercise_id = parseInt(exercise_id);
-  console.log(submitted_answer);
   let exercise = await Exercise.findOne({
     where: {
       exercise_id: exercise_id,

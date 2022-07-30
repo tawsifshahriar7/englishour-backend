@@ -13,6 +13,7 @@ const submitExercise = require("../controllers/student/submitExercise");
 const getProfiles = require("../controllers/student/getProfiles");
 const selectProfile = require("../controllers/student/selectProfile");
 const getTutorial = require("../controllers/student/getTutorial");
+const updateProfile = require("../controllers/student/profileUpdate");
 
 router.get("/user/info", auth, (req, res) => {
   userInfo(req, res);
@@ -46,5 +47,8 @@ router.get("/user/selectProfile", auth, (req, res) => {
 });
 router.get("/user/getTutorial", auth, profileAuth, (req, res) => {
   getTutorial(req, res);
+});
+router.post("/user/updateProfile", auth, profileAuth, (req, res) => {
+  updateProfile(req, res);
 });
 module.exports = router;

@@ -4,12 +4,13 @@ const Profile = require("../../model/profile");
 
 const createProfile = async (req, res) => {
   await Profile.create({
-    username: req.body.username,
+    username: req.user.username,
     first_name: req.body.firstName,
     last_name: req.body.lastName,
     dateofBirth: req.body.dateofBirth,
     institution: req.body.institution,
-    // class: req.body.class,
+    class: req.body.Class,
+    current_level: 1,
   })
     .then((result) => {
       console.log(result);
