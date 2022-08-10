@@ -4,6 +4,10 @@ const item = require("../../model/item");
 const exercise = require("../../model/exercise");
 const SentenceShuffle = require("../../model/sentenceshuffle");
 const ChangeLetter = require("../../model/letterchange");
+const Moderator = require("../../model/moderator");
+
+const ModeratorNotification = require("../../model/moderator_notification");
+const ModeratorNotificationStatus = require("../../model/moderator_notification_status");
 
 const insert = async (req, res) => {
   let type = req.body.type;
@@ -11,14 +15,12 @@ const insert = async (req, res) => {
   let tutorial_id = req.body.tutorial_id;
   let moderator_id = req.body.moderator_id;
   let description = req.body.description;
-
-  console.log(req.body);
+  let content = req.body.content;
+  let date = req.body.date;
 
   if (type === "sentenceshuffling") {
     let correct = req.body.correct;
-
     let correctSentences = correct.split("#");
-
     let length = correctSentences.length - 1;
 
     let exercise_id_reference = 0;
@@ -32,8 +34,18 @@ const insert = async (req, res) => {
         tutorial_id: tutorial_id,
       })
       .then((result_exercise) => {
-        console.log("In exercise then" + result_exercise);
         exercise_id_reference = result_exercise.dataValues.exercise_id;
+        ModeratorNotification.create({
+          content: content+"#"+exercise_id_reference+"#"+moderator_id,
+          // date: date,
+          status: "pending",
+        }).then((result_notification) => {
+          console.log(result_notification)
+        }).catch((err_notification) => {
+          console.log(err_notification);
+          //return res.status(status_codes.ERROR).send(err_notification);
+        });
+
         let item_id_reference = 0;
         for (let i = 0; i < length; i++) {
           item
@@ -90,8 +102,18 @@ const insert = async (req, res) => {
         tutorial_id: tutorial_id,
       })
       .then((result_exercise) => {
-        console.log("In exercise then" + result_exercise);
         exercise_id_reference = result_exercise.dataValues.exercise_id;
+        ModeratorNotification.create({
+          content: content+"#"+exercise_id_reference+"#"+moderator_id,
+          // date: date,
+          status: "pending",
+        }).then((result_notification) => {
+          console.log(result_notification)
+        }).catch((err_notification) => {
+          console.log(err_notification);
+          //return res.status(status_codes.ERROR).send(err_notification);
+        });
+
         let item_id_reference = 0;
         for (let i = 0; i < length; i++) {
           item
