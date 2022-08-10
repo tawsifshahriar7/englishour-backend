@@ -8,7 +8,7 @@ const ModeratorNotificationStatus = db.define(
       primaryKey: true,
       // autoIncrement: true,
       references: {
-        model: "profile_notification",
+        model: "moderator_notification",
         key: "notification_id",
         onDelete: "cascade",
         onUpdate: "cascade",
@@ -26,10 +26,6 @@ const ModeratorNotificationStatus = db.define(
         onUpdate: "cascade",
         hooks: true,
       },
-    },
-    status: {
-      type: db.Sequelize.STRING,
-      allowNull: false,
     },
   },
   {
