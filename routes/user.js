@@ -14,6 +14,7 @@ const getProfiles = require("../controllers/student/getProfiles");
 const selectProfile = require("../controllers/student/selectProfile");
 const getTutorial = require("../controllers/student/getTutorial");
 const updateProfile = require("../controllers/student/profileUpdate");
+const groupwords = require("../controllers/student/groupwords");
 
 router.get("/user/info", auth, (req, res) => {
   userInfo(req, res);
@@ -35,6 +36,9 @@ router.get("/user/letterchange", auth, profileAuth, (req, res) => {
 });
 router.get("/user/sentenceshuffle", auth, profileAuth, (req, res) => {
   sentenceshuffle(req, res);
+});
+router.get("/user/groupwords", (req, res) => {
+  groupwords(req, res);
 });
 router.post("/user/submitExercise", auth, profileAuth, (req, res) => {
   submitExercise(req, res);
