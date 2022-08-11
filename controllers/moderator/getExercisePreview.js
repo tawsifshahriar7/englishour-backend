@@ -2,6 +2,9 @@ const { json } = require("express/lib/response");
 const Exercise = require("../../model/exercise");
 const item = require("../../model/item");
 const letterchange = require("../../model/letterchange");
+const groupwords = require("../../model/groupwords");
+const words = require("../../model/words");
+
 const sentenceshuffle = require("../../model/sentenceshuffle");
 const status_codes = require("../../utils/status_code/status_code");
 
@@ -13,7 +16,7 @@ const ExerciseDetails = async (req, res) => {
     let exercise = await Exercise.findOne({
         where: { exercise_id: exercise_id },
     })
-    AsAWhole += exercise.dataValues.description+"#";
+    AsAWhole += exercise.dataValues.description+"###";
     if(exercise_type === "letterchange"){
         let items = await item.findAll({
             where: { exercise_id: exercise_id },
@@ -40,6 +43,32 @@ const ExerciseDetails = async (req, res) => {
         }
         console.log(AsAWhole);
         return res.status(status_codes.SUCCESS).send(AsAWhole);
+    }
+    else if(exercise_type === "categorizewords"){
+        console.log("group words e achi");
+
+        let items = await item.findAll({
+            where: { exercise_id: exercise_id },
+        });
+        for(let item of items){
+            let Category = await groupwords.findOne({
+                where: { item_id: item.dataValues.item_id },
+            });
+            AsAWhole += Category.dataValues.group_name + "##";
+
+            let Answers = await words.findAll({
+                where: { item_id: item.dataValues.item_id },
+            });
+
+            for(let answer of Answers){
+                AsAWhole += answer.dataValues.word + "#";
+            }
+
+            AsAWhole += "##";
+        }
+        console.log("sending asAWhole: ", AsAWhole);
+        return res.status(status_codes.SUCCESS).send(AsAWhole);
+
     }
 };
 
