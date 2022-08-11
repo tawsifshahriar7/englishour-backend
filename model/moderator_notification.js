@@ -17,6 +17,10 @@ const ModeratorNotification = db.define(
       allowNull: true,
       defaultValue: db.Sequelize.fn("now"),
     },
+    status: {
+      type: db.Sequelize.STRING,
+      allowNull: false,
+    },
   },
   {
     timestamps: false,

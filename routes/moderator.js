@@ -14,6 +14,10 @@ const AddTutorial = require("../controllers/moderator/addTutorial");
 const TutorialInfo = require("../controllers/moderator/tutorialInfo");
 const UpdatePassword = require("../controllers/moderator/updatePassword");
 const ForgotPassword = require("../controllers/moderator/forgotPassword");
+const ModeratorNotification = require("../controllers/moderator/getModeratorNotifications");
+const ExerciseDetails = require("../controllers/moderator/getExInfo");
+const getExercisePreview = require("../controllers/moderator/getExercisePreview");
+const UpdateStatus = require("../controllers/moderator/approveExercise");
 
 
 router.post("/moderator/insert", auth, insert);
@@ -28,5 +32,9 @@ router.post("/moderator/addTutorial", auth, AddTutorial);
 router.get("/moderator/tutorialInfo/moderator_id", auth, TutorialInfo);
 router.post("/moderator/updatePassword", auth, UpdatePassword);
 router.post("/moderator/forgotPassword", ForgotPassword);
+router.get("/moderator/notification/moderator_id", auth, ModeratorNotification);
+router.get("/moderator/exerciseDetails", auth, ExerciseDetails);
+router.get("/moderator/exercisePreview", auth, getExercisePreview);
+router.post("/moderator/approveExercise", auth, UpdateStatus);
 
 module.exports = router;
