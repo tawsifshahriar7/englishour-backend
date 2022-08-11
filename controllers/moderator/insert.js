@@ -4,7 +4,8 @@ const item = require("../../model/item");
 const exercise = require("../../model/exercise");
 const SentenceShuffle = require("../../model/sentenceshuffle");
 const ChangeLetter = require("../../model/letterchange");
-
+const GroupWords = require("../../model/groupwords");
+const Words = require("../../model/words");
 const insert = async (req, res) => {
   let type = req.body.type;
   let level = req.body.level;
@@ -127,6 +128,89 @@ const insert = async (req, res) => {
         console.log(err_exercise);
         return res.status(status_codes.ERROR).send(err_exercise);
       });
+  }
+  else if(type === "categorizewords"){
+
+
+    let hints = req.body.hints;
+    let answers = req.body.answers;
+
+    let AllHints = hints.split("#");
+    let AllAnswers = answers.split("###");
+
+    let length = AllHints.length - 1;
+
+    console.log(length);
+
+    let exercise_id_reference = 0;
+    exercise
+      .create({
+        exercise_type: type,
+        level: level,
+        approval_status: "pending",
+        description: description,
+        moderator_id: moderator_id,
+        tutorial_id: tutorial_id,
+      })
+      .then((result_exercise) => {
+        console.log("In categorize exercise then" + result_exercise);
+        exercise_id_reference = result_exercise.dataValues.exercise_id;
+        let item_id_reference = 0;
+        for (let i = 0; i < length; i++) {
+          item
+            .create({
+              exercise_id: exercise_id_reference,
+            })
+            .then((result_item) => {
+              console.log(result_item);
+              item_id_reference = result_item.dataValues.item_id;
+              GroupWords.create({
+                item_id: item_id_reference,
+                group_name: AllHints[i],
+                createdAt: Date.now(),
+                updatedAt: Date.now(),
+              })
+                .then((result_groupWords) => {
+                  
+                  let answer_list = AllAnswers[i].split("#");
+
+                  for(let j = 0; j < answer_list.length; j++){
+                    Words.create({
+                      item_id: result_groupWords.dataValues.item_id,
+                      word: answer_list[j],
+                    })
+                    .then((words_item) => {
+                      console.log("words_item created", words_item);
+                    })
+                    .catch((err_words) => {
+                      console.log("error in word item");
+                      console.log(err_words);
+                      return res.status(status_codes.ERROR).send(err_words);
+                    });
+                  }
+                 
+                  console.log(result_groupWords);
+                  //return res.status(status_codes.SUCCESS).send(result_shuffle);
+                })
+                .catch((err_groupWords) => {
+                  console.log(err_groupWords);
+                  return res.status(status_codes.ERROR).send(err_groupWords);
+                });
+              //return res.status(status_codes.SUCCESS).send(result_item);
+            })
+            .catch((err_item) => {
+              console.log(err_item);
+              return res.status(status_codes.ERROR).send(err_item);
+            });
+        }
+        return res.status(status_codes.SUCCESS).send(result_exercise);
+      })
+      .catch((err_exercise) => {
+        console.log(err_exercise);
+        return res.status(status_codes.ERROR).send(err_exercise);
+      });
+
+    
   }
 };
 
