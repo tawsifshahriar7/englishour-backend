@@ -20,7 +20,6 @@ const insert = async (req, res) => {
   let moderator_id = req.body.moderator_id;
   let description = req.body.description;
   let content = req.body.content;
-  let date = req.body.date;
 
   if (type === "sentenceshuffling") {
     let correct = req.body.correct;
@@ -182,6 +181,16 @@ const insert = async (req, res) => {
       .then((result_exercise) => {
         console.log("In categorize exercise then" + result_exercise);
         exercise_id_reference = result_exercise.dataValues.exercise_id;
+        ModeratorNotification.create({
+          content: content+"#"+exercise_id_reference+"#"+moderator_id,
+          // date: date,
+          status: "pending",
+        }).then((result_notification) => {
+          console.log(result_notification)
+        }).catch((err_notification) => {
+          console.log(err_notification);
+          //return res.status(status_codes.ERROR).send(err_notification);
+        });
         let item_id_reference = 0;
         for (let i = 0; i < length; i++) {
           item
