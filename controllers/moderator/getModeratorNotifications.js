@@ -1,6 +1,5 @@
 const { json } = require("express/lib/response");
 const ModeratorNotification = require("../../model/moderator_notification");
-const ModeratorNotificationStatus = require("../../model/moderator_notification_status");
 const status_codes = require("../../utils/status_code/status_code");
 
 const NotificationInfo = async (req, res) => {
