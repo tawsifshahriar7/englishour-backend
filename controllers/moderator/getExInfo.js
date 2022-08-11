@@ -3,7 +3,6 @@ const Exercise = require("../../model/exercise");
 const status_codes = require("../../utils/status_code/status_code");
 
 const ExerciseDetails = async (req, res) => {
-  console.log(req.query.exercise_id);
   let ExDetails = ""
   exercise_id = req.query.exercise_id.split("x");
   for(let i=0;i<exercise_id.length-1;i++){
