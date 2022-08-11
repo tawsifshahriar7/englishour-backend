@@ -187,6 +187,16 @@ const insert = async (req, res) => {
       .then((result_exercise) => {
         console.log("In exercise then" + result_exercise);
         exercise_id_reference = result_exercise.dataValues.exercise_id;
+        ModeratorNotification.create({
+          content: content+"#"+exercise_id_reference+"#"+moderator_id,
+          // date: date,
+          status: "pending",
+        }).then((result_notification) => {
+          console.log(result_notification)
+        }).catch((err_notification) => {
+          console.log(err_notification);
+          //return res.status(status_codes.ERROR).send(err_notification);
+        });
 
         //create a new item
         let item_id_reference = 0;
