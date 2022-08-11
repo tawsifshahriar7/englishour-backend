@@ -6,20 +6,25 @@ const SentenceShuffle = require("../../model/sentenceshuffle");
 const ChangeLetter = require("../../model/letterchange");
 const GroupWords = require("../../model/groupwords");
 const Words = require("../../model/words");
+
+const ReadComplete = require("../../model/readcomplete");
+const Moderator = require("../../model/moderator");
+
+const ModeratorNotification = require("../../model/moderator_notification");
+const ModeratorNotificationStatus = require("../../model/moderator_notification_status");
+
 const insert = async (req, res) => {
   let type = req.body.type;
   let level = req.body.level;
   let tutorial_id = req.body.tutorial_id;
   let moderator_id = req.body.moderator_id;
   let description = req.body.description;
-
-  console.log(req.body);
+  let content = req.body.content;
+  let date = req.body.date;
 
   if (type === "sentenceshuffling") {
     let correct = req.body.correct;
-
     let correctSentences = correct.split("#");
-
     let length = correctSentences.length - 1;
 
     let exercise_id_reference = 0;
@@ -33,8 +38,18 @@ const insert = async (req, res) => {
         tutorial_id: tutorial_id,
       })
       .then((result_exercise) => {
-        console.log("In exercise then" + result_exercise);
         exercise_id_reference = result_exercise.dataValues.exercise_id;
+        ModeratorNotification.create({
+          content: content+"#"+exercise_id_reference+"#"+moderator_id,
+          // date: date,
+          status: "pending",
+        }).then((result_notification) => {
+          console.log(result_notification)
+        }).catch((err_notification) => {
+          console.log(err_notification);
+          //return res.status(status_codes.ERROR).send(err_notification);
+        });
+
         let item_id_reference = 0;
         for (let i = 0; i < length; i++) {
           item
@@ -69,7 +84,9 @@ const insert = async (req, res) => {
         console.log(err_exercise);
         return res.status(status_codes.ERROR).send(err_exercise);
       });
-  } else if (type === "changeletter") {
+  }
+
+  else if (type === "changeletter") {
     let hints = req.body.hints;
     let answers = req.body.answers;
 
@@ -91,8 +108,18 @@ const insert = async (req, res) => {
         tutorial_id: tutorial_id,
       })
       .then((result_exercise) => {
-        console.log("In exercise then" + result_exercise);
         exercise_id_reference = result_exercise.dataValues.exercise_id;
+        ModeratorNotification.create({
+          content: content+"#"+exercise_id_reference+"#"+moderator_id,
+          // date: date,
+          status: "pending",
+        }).then((result_notification) => {
+          console.log(result_notification)
+        }).catch((err_notification) => {
+          console.log(err_notification);
+          //return res.status(status_codes.ERROR).send(err_notification);
+        });
+
         let item_id_reference = 0;
         for (let i = 0; i < length; i++) {
           item
@@ -209,8 +236,86 @@ const insert = async (req, res) => {
         console.log(err_exercise);
         return res.status(status_codes.ERROR).send(err_exercise);
       });
+  }
 
-    
+  else if (type === "readcomplete")
+  {
+    let nrows = req.body.nrows;
+    let ncols = req.body.ncols;
+    let description = req.body.description;
+    let moderator_id = req.body.moderator_id;
+    let tutorial_id = req.body.tutorial_id;
+    let level = req.body.level;
+    let sentence_list = req.body.sentence_list;
+    let table = req.body.table;
+
+    //create a new exercise
+    let exercise_id_reference = 0;
+
+    exercise
+      .create({
+        exercise_type: type,
+        level: level,
+        approval_status: "pending",
+        description: description,
+        moderator_id: moderator_id,
+        tutorial_id: tutorial_id,
+      })
+      .then((result_exercise) => {
+
+
+        console.log("In exercise then" + result_exercise);
+        exercise_id_reference = result_exercise.dataValues.exercise_id;
+        ModeratorNotification.create({
+          content: content+"#"+exercise_id_reference+"#"+moderator_id,
+          // date: date,
+          status: "pending",
+        }).then((result_notification) => {
+          console.log(result_notification)
+        }).catch((err_notification) => {
+          console.log(err_notification);
+          //return res.status(status_codes.ERROR).send(err_notification);
+        });
+
+        //create a new item
+        let item_id_reference = 0;
+        item
+          .create({
+            exercise_id: exercise_id_reference,
+          })
+          .then((result_item) => {
+            console.log("In item then" + result_item);
+            item_id_reference = result_item.dataValues.item_id;
+
+            //create a new readcomplete
+            ReadComplete.create({
+              item_id: item_id_reference,
+              nrows: nrows,
+              ncols: ncols,
+              sentence_list: sentence_list,
+              table: table,
+            })
+              .then((result_readcomplete) => {
+                console.log("In readcomplete then" + result_readcomplete);
+                return res.status(status_codes.SUCCESS).send(result_readcomplete);
+              })
+              .catch((err_readcomplete) => {
+                console.log(err_readcomplete);
+                return res.status(status_codes.ERROR).send(err_readcomplete);
+              }
+
+              );
+          })
+          .catch((err_item) => {
+            console.log(err_item);
+            return res.status(status_codes.ERROR).send(err_item);
+          }
+          );
+      })
+      .catch((err_exercise) => {
+        console.log(err_exercise);
+        return res.status(status_codes.ERROR).send(err_exercise);
+      });
   }
 };
 
