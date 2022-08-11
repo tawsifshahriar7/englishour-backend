@@ -16,6 +16,7 @@ const getTutorial = require("../controllers/student/getTutorial");
 const updateProfile = require("../controllers/student/profileUpdate");
 const groupwords = require("../controllers/student/groupwords");
 const changePassword = require("../controllers/student/passwordChange");
+const viewSecretQuestion = require("../controllers/student/viewSecretQuestion");
 
 router.get("/user/info", auth, (req, res) => {
   userInfo(req, res);
@@ -55,6 +56,9 @@ router.get("/user/getTutorial", auth, profileAuth, (req, res) => {
 });
 router.post("/user/updateProfile", auth, profileAuth, (req, res) => {
   updateProfile(req, res);
+});
+router.get("/user/getSecretQuestion", (req, res) => {
+  viewSecretQuestion(req, res);
 });
 router.post("/user/changepassword", (req, res) => {
   changePassword(req, res);

@@ -23,7 +23,7 @@ const changePassword = async (req, res) => {
         );
         return res.status(status_codes.SUCCESS).send("Password Changed");
       }
-      return res.status(400).send("Invalid Secret Answer");
+      return res.status(status_codes.FORBIDDEN).send("Invalid Secret Answer");
     }
   } catch (err) {
     console.log(err);
