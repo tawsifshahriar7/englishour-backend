@@ -15,6 +15,7 @@ const TutorialInfo = require("../controllers/moderator/tutorialInfo");
 const UpdatePassword = require("../controllers/moderator/updatePassword");
 const ForgotPassword = require("../controllers/moderator/forgotPassword");
 
+
 router.post("/moderator/insert", auth, insert);
 router.post("/moderator/insertProfile", auth, insertProfile);
 router.get("/moderator/profileInfo/moderator_id", auth, profileInfo);
