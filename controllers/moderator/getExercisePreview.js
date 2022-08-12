@@ -4,7 +4,8 @@ const item = require("../../model/item");
 const letterchange = require("../../model/letterchange");
 const groupwords = require("../../model/groupwords");
 const words = require("../../model/words");
-
+const fillinthegaps = require("../../model/FillInTheGaps");
+const gaps = require("../../model/Gaps");
 const sentenceshuffle = require("../../model/sentenceshuffle");
 const status_codes = require("../../utils/status_code/status_code");
 
@@ -68,7 +69,28 @@ const ExerciseDetails = async (req, res) => {
         }
         console.log("sending asAWhole: ", AsAWhole);
         return res.status(status_codes.SUCCESS).send(AsAWhole);
+    }
+    else if(exercise_type === "fillinthegaps"){
+        let items = await item.findAll({
+            where: { exercise_id: exercise_id },
+        });
+        for(let item of items){
+            let passages = await fillinthegaps.findOne({
+                where: { item_id: item.dataValues.item_id },
+            });
+            AsAWhole += passages.dataValues.passage + "##";
 
+            let Clues = await gaps.findAll({
+                where: { item_id: item.dataValues.item_id },
+            });
+
+            for(let clue of Clues){
+                AsAWhole += clue.dataValues.gapWord + "#";
+            }
+        }
+
+        console.log(AsAWhole);
+        return res.status(status_codes.SUCCESS).send(AsAWhole);
     }
 };
 

@@ -32,8 +32,8 @@ const FillInTheGapsHistory = db.define(
       primaryKey: true,
       // autoIncrement: true,
       references: {
-        model: "words",
-        key: "word_id",
+        model: "gaps",
+        key: "gap_id",
         onDelete: "cascade",
         onUpdate: "cascade",
         hooks: true,

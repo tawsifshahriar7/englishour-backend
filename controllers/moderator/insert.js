@@ -6,6 +6,8 @@ const SentenceShuffle = require("../../model/sentenceshuffle");
 const ChangeLetter = require("../../model/letterchange");
 const GroupWords = require("../../model/groupwords");
 const Words = require("../../model/words");
+const FillInTheGaps = require("../../model/FillInTheGaps");
+const Gaps = require("../../model/Gaps");
 
 const ReadComplete = require("../../model/readcomplete");
 const Moderator = require("../../model/moderator");
@@ -320,6 +322,79 @@ const insert = async (req, res) => {
             return res.status(status_codes.ERROR).send(err_item);
           }
           );
+      })
+      .catch((err_exercise) => {
+        console.log(err_exercise);
+        return res.status(status_codes.ERROR).send(err_exercise);
+      });
+  }
+  else if(type === "fillinthegaps"){
+    let passage = req.body.passage;
+    let answers = []
+    const txt = passage;
+    const regExp = /\(([^)]+)\)/g;
+    const matches = [...txt.match(regExp)];
+    console.log(matches);
+    for(let i = 0; i < matches.length; i++){
+      answers.push(matches[i].replace(/[()]/g, ''));
+    }
+    console.log(answers);
+    console.log(answers.length);
+
+    let exercise_id_reference = 0;
+    exercise
+      .create({
+        exercise_type: type,
+        level: level,
+        approval_status: "pending",
+        description: description,
+        moderator_id: moderator_id,
+        tutorial_id: tutorial_id,
+      })
+      .then((result_exercise) => {
+        exercise_id_reference = result_exercise.dataValues.exercise_id;
+        ModeratorNotification.create({
+          content: content+"#"+exercise_id_reference+"#"+moderator_id,
+          status: "pending",
+        }).then((result_notification) => {
+          console.log(result_notification)
+        }).catch((err_notification) => {
+          console.log(err_notification);
+        });
+        let item_id_reference = 0;
+        item
+          .create({
+            exercise_id: exercise_id_reference,
+          })
+          .then((result_item) => {
+            console.log(result_item);
+            item_id_reference = result_item.dataValues.item_id;
+            FillInTheGaps.create({
+              item_id: item_id_reference,
+              passage: passage,
+            })
+              .then((result_fillinthegaps) => {
+                console.log(result_fillinthegaps);
+                for(let i = 0; i < answers.length; i++){
+                  Gaps
+                    .create({
+                      item_id: item_id_reference,
+                      gapWord: answers[i],
+                    })
+                    .then((result_gaps) => {
+                      console.log(result_gaps);
+                    }).catch((err_gaps) => {
+                      console.log(err_gaps);
+                    });
+                }
+              }).catch((err_fillinthegaps) => {
+                console.log(err_fillinthegaps);
+              });
+          })
+          .catch((err_item) => {
+            console.log(err_item);
+          });
+          return res.status(status_codes.SUCCESS).send(result_exercise);
       })
       .catch((err_exercise) => {
         console.log(err_exercise);
