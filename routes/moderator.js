@@ -19,6 +19,7 @@ const ExerciseDetails = require("../controllers/moderator/getExInfo");
 const getExercisePreview = require("../controllers/moderator/getExercisePreview");
 const UpdateStatus = require("../controllers/moderator/approveExercise");
 
+
 router.post("/moderator/insert", auth, insert);
 router.post("/moderator/insertProfile", auth, insertProfile);
 router.get("/moderator/profileInfo/moderator_id", auth, profileInfo);

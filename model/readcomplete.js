@@ -23,6 +23,21 @@ const ReadComplete = db.define(
       type: db.Sequelize.INTEGER,
       allowNull: false,
     },
+
+    sentence_list:
+    {
+      //type= json
+      type: db.Sequelize.JSON,
+      allowNull: false,
+    },
+
+    table:
+    {
+      //type= json
+      type: db.Sequelize.JSON,
+      allowNull: false,
+    }
+
   },
   {
     timestamps: false,
