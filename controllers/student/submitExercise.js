@@ -3,6 +3,7 @@ const status_codes = require("../../utils/status_code/status_code");
 const Exercise = require("../../model/exercise");
 const Item = require("../../model/item");
 const LetterChange = require("../../model/letterchange");
+const FillInTheGaps = require("../../model/fillinthegaps");
 const SentenceShuffle = require("../../model/sentenceshuffle");
 const History = require("../../model/history");
 
@@ -37,6 +38,70 @@ const verify = async (req, res) => {
       });
       submitted_answer[i] = submitted_answer[i].toLowerCase();
       if (letterchange[0].dataValues.answer === submitted_answer[i]) {
+        result.push(true);
+        if (history === null) {
+          await History.create({
+            item_id: items[i].dataValues.item_id,
+            profile_id: req.profile.profile_id,
+            status: "solved",
+            nattempts: 1,
+          });
+        } else {
+          await History.update(
+            {
+              status: "solved",
+              nattempts: history.dataValues.nattempts + 1,
+            },
+            {
+              where: {
+                item_id: items[i].dataValues.item_id,
+                profile_id: req.profile.profile_id,
+              },
+            }
+          );
+        }
+      } else {
+        result.push(false);
+        if (history === null) {
+          await History.create({
+            item_id: items[i].dataValues.item_id,
+            profile_id: req.profile.profile_id,
+            status: "failed",
+            nattempts: 1,
+          });
+        } else {
+          await History.update(
+            {
+              status: "failed",
+              nattempts: history.dataValues.nattempts + 1,
+            },
+            {
+              where: {
+                item_id: items[i].dataValues.item_id,
+                profile_id: req.profile.profile_id,
+              },
+            }
+          );
+        }
+      }
+    }
+    return res.status(status_codes.SUCCESS).send(result);
+  }else if (exercise.dataValues.exercise_type === "fillinthegaps") {
+    let result = [];
+    for (let i = 0; i < items.length; i++) {
+      let fillinthegaps = await FillInTheGaps.findAll({
+        where: {
+          item_id: items[i].dataValues.item_id,
+        },
+      });
+      let history = await History.findOne({
+        where: {
+          item_id: items[i].dataValues.item_id,
+          profile_id: req.profile.profile_id,
+        },
+      });
+      submitted_answer[i] = submitted_answer[i].toLowerCase();
+      if (fillinthegaps[0].dataValues.answer === submitted_answer[i]) {
         result.push(true);
         if (history === null) {
           await History.create({

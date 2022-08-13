@@ -6,11 +6,11 @@ const User = require("../../model/user");
 const SecretQuestion = require("../../model/secretQuestions");
 
 const register = async (req, res) => {
+  console.log(req.body.usernames)
   try {
     // Get user input
     const { username, email, password, secret_question, secret_answer } =
       req.body;
-
     // Validate user input
     if (!(email && password && username)) {
       res.status(400).send("All input is required");
