@@ -19,6 +19,8 @@ const changePassword = require("../controllers/student/passwordChange");
 const viewSecretQuestion = require("../controllers/student/viewSecretQuestion");
 const getExerciseList = require("../controllers/student/getExerciseList");
 const dictionarySearch = require("../controllers/student/dictionarySearch");
+const getCategories = require("../controllers/student/fetchCategories");
+const getTopics = require("../controllers/student/getTopics");
 
 router.get("/user/info", auth, (req, res) => {
   userInfo(req, res);
@@ -70,5 +72,11 @@ router.get("/user/getExerciseList", auth, profileAuth, (req, res) => {
 });
 router.get("/user/search", auth, profileAuth, (req, res) => {
   dictionarySearch(req, res);
+});
+router.get("/user/getCategories", (req, res) => {
+  getCategories(req, res);
+});
+router.get("/user/getTopics", (req, res) => {
+  getTopics(req, res);
 });
 module.exports = router;
