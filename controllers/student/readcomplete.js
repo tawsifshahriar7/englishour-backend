@@ -10,16 +10,28 @@ const readcomplete = async (req, res) => {
         exercise_id: exercise_id,
         },
     });
-    let readcompletes = [];
+    let firstRow = [];
+    let rows = [];
     for (let i = 0; i < items.length; i++) {
         let readcomplete = await ReadComplete.findAll({
         where: {
             item_id: items[i].dataValues.item_id,
         },
         });
-        readcompletes.push(readcomplete);
+
+        Object.keys(readcomplete[0].dataValues.sentence_list).forEach((key)=>{
+            firstRow.push(readcomplete[0].dataValues.sentence_list[key]);
+        });
+
+        Object.keys(readcomplete[0].dataValues.table).forEach((key)=>{
+            rows.push(readcomplete[0].dataValues.table[key]);
+        });
     }
-    return res.status(status_codes.SUCCESS).send(readcompletes);
+    let result = {
+        firstRow: firstRow,
+        rows: rows
+    };
+    return res.status(status_codes.SUCCESS).send(result);
 }
 
 module.exports = readcomplete;
