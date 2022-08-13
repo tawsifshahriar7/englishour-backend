@@ -15,6 +15,7 @@ const ModStats = async (req, res) => {
     let moderator_id = parseInt(req.query.moderator_id);
     console.log("backend: " + moderator_id);
     let exercises = await Exercise.findAll({
+        // where: { moderator_id: moderator_id , approval_status: "approved" },
         where: { moderator_id: moderator_id },
     });
 
