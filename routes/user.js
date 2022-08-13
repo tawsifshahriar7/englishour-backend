@@ -8,6 +8,7 @@ const userLogin = require("../controllers/student/userLogin");
 const createProfile = require("../controllers/student/createProfile");
 const profileInfo = require("../controllers/student/userProfile");
 const letterchange = require("../controllers/student/letterchange");
+const fillinthegaps = require("../controllers/student/fillinthegaps");
 const sentenceshuffle = require("../controllers/student/sentenceshuffle");
 const submitExercise = require("../controllers/student/submitExercise");
 const getProfiles = require("../controllers/student/getProfiles");
@@ -39,6 +40,9 @@ router.get("/user/profile", auth, profileAuth, (req, res) => {
 });
 router.get("/user/letterchange", auth, profileAuth, (req, res) => {
   letterchange(req, res);
+});
+router.get("/user/fillinthegaps", auth, profileAuth, (req, res) => {
+  fillinthegaps(req, res);
 });
 router.get("/user/sentenceshuffle", auth, profileAuth, (req, res) => {
   sentenceshuffle(req, res);
