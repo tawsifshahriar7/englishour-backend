@@ -18,6 +18,7 @@ const groupwords = require("../controllers/student/groupwords");
 const changePassword = require("../controllers/student/passwordChange");
 const viewSecretQuestion = require("../controllers/student/viewSecretQuestion");
 const getExerciseList = require("../controllers/student/getExerciseList");
+const dictionarySearch = require("../controllers/student/dictionarySearch");
 
 router.get("/user/info", auth, (req, res) => {
   userInfo(req, res);
@@ -66,5 +67,8 @@ router.post("/user/changepassword", (req, res) => {
 });
 router.get("/user/getExerciseList", auth, profileAuth, (req, res) => {
   getExerciseList(req, res);
+});
+router.get("/user/search", auth, profileAuth, (req, res) => {
+  dictionarySearch(req, res);
 });
 module.exports = router;
