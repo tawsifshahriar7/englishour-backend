@@ -18,7 +18,7 @@ const fillinthegaps = async (req, res) => {
         item_id: items.dataValues.item_id,
       },
     });
-    console.log(fillinthegaps.dataValues.passage);
+    //console.log(fillinthegaps.dataValues.passage);
     //fillinthegaps.push(fillinthegaps);
  // }
   

@@ -87,68 +87,97 @@ const verify = async (req, res) => {
     }
     return res.status(status_codes.SUCCESS).send(result);
   }else if (exercise.dataValues.exercise_type === "fillinthegaps") {
-    let result = [];
-    for (let i = 0; i < items.length; i++) {
-      let fillinthegaps = await FillInTheGaps.findAll({
-        where: {
-          item_id: items[i].dataValues.item_id,
-        },
-      });
-      let history = await History.findOne({
-        where: {
-          item_id: items[i].dataValues.item_id,
-          profile_id: req.profile.profile_id,
-        },
-      });
-      submitted_answer[i] = submitted_answer[i].toLowerCase();
-      if (fillinthegaps[0].dataValues.answer === submitted_answer[i]) {
-        result.push(true);
-        if (history === null) {
-          await History.create({
-            item_id: items[i].dataValues.item_id,
-            profile_id: req.profile.profile_id,
-            status: "solved",
-            nattempts: 1,
-          });
-        } else {
-          await History.update(
-            {
-              status: "solved",
-              nattempts: history.dataValues.nattempts + 1,
-            },
-            {
-              where: {
-                item_id: items[i].dataValues.item_id,
-                profile_id: req.profile.profile_id,
-              },
-            }
-          );
-        }
-      } else {
-        result.push(false);
-        if (history === null) {
-          await History.create({
-            item_id: items[i].dataValues.item_id,
-            profile_id: req.profile.profile_id,
-            status: "failed",
-            nattempts: 1,
-          });
-        } else {
-          await History.update(
-            {
-              status: "failed",
-              nattempts: history.dataValues.nattempts + 1,
-            },
-            {
-              where: {
-                item_id: items[i].dataValues.item_id,
-                profile_id: req.profile.profile_id,
-              },
-            }
-          );
-        }
-      }
-    }
+
+   console.log("aschi ami");
+   console.log(submitted_answer);
+ 
+   let count=0;
+   
+   for(let i=0;i<submitted_answer.referenceList.length;i++){
+
+     let text = submitted_answer.submission[i];
+     const myArray = text.split("#");
+    // console.log(submitted_answer.reference);
+     console.log("expected :"+submitted_answer.referenceList[parseInt(myArray[0])]);
+     console.log("found :"+submitted_answer.shuffledList[parseInt(myArray[1])]);
+
+     if(submitted_answer.referenceList[parseInt(myArray[0])]===submitted_answer.shuffledList[parseInt(myArray[1])]){
+       console.log("matched");
+       count++;
+     }else {
+       console.log("un-matched");
+     }
+   
+     
+   }
+
+  
+    let  result = (count===submitted_answer.referenceList.length)? true:false;
+
+
+    
+    // for (let i = 0; i < items.length; i++) {
+    //   let fillinthegaps = await FillInTheGaps.findAll({
+    //     where: {
+    //       item_id: items[i].dataValues.item_id,
+    //     },
+    //   });
+    //   let history = await History.findOne({
+    //     where: {
+    //       item_id: items[i].dataValues.item_id,
+    //       profile_id: req.profile.profile_id,
+    //     },
+    //   });
+    //   submitted_answer[i] = submitted_answer[i].toLowerCase();
+    //   if (fillinthegaps[0].dataValues.answer === submitted_answer[i]) {
+    //     result.push(true);
+    //     if (history === null) {
+    //       await History.create({
+    //         item_id: items[i].dataValues.item_id,
+    //         profile_id: req.profile.profile_id,
+    //         status: "solved",
+    //         nattempts: 1,
+    //       });
+    //     } else {
+    //       await History.update(
+    //         {
+    //           status: "solved",
+    //           nattempts: history.dataValues.nattempts + 1,
+    //         },
+    //         {
+    //           where: {
+    //             item_id: items[i].dataValues.item_id,
+    //             profile_id: req.profile.profile_id,
+    //           },
+    //         }
+    //       );
+    //     }
+    //   } else {
+    //     result.push(false);
+    //     if (history === null) {
+    //       await History.create({
+    //         item_id: items[i].dataValues.item_id,
+    //         profile_id: req.profile.profile_id,
+    //         status: "failed",
+    //         nattempts: 1,
+    //       });
+    //     } else {
+    //       await History.update(
+    //         {
+    //           status: "failed",
+    //           nattempts: history.dataValues.nattempts + 1,
+    //         },
+    //         {
+    //           where: {
+    //             item_id: items[i].dataValues.item_id,
+    //             profile_id: req.profile.profile_id,
+    //           },
+    //         }
+    //       );
+    //     }
+    //   }
+    // }
+    console.log(result);
     return res.status(status_codes.SUCCESS).send(result);
   } else if (exercise.dataValues.exercise_type === "sentenceshuffling") {
     let result = [];
