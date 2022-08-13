@@ -70,27 +70,57 @@ const ExerciseDetails = async (req, res) => {
         console.log("sending asAWhole: ", AsAWhole);
         return res.status(status_codes.SUCCESS).send(AsAWhole);
     }
-    else if(exercise_type === "fillinthegaps"){
-        let items = await item.findAll({
+    else if(exercise_type === "fillgaps"){
+        console.log("fill in the gaps e achi");
+        let Item = await item.findOne({
             where: { exercise_id: exercise_id },
         });
-        for(let item of items){
-            let passages = await fillinthegaps.findOne({
-                where: { item_id: item.dataValues.item_id },
-            });
-            AsAWhole += passages.dataValues.passage + "##";
+        let Passage = await fillinthegaps.findOne({
+            where: { item_id: Item.dataValues.item_id },
+        });
 
-            let Clues = await gaps.findAll({
-                where: { item_id: item.dataValues.item_id },
-            });
+        let clues = []
+        const txt = Passage.dataValues.passage;
+        const regExp = /\(([^)]+)\)/g;
+        const matches = [...txt.match(regExp)];
+        console.log(matches);
+        for(let i = 0; i < matches.length; i++){
+            clues.push(matches[i].replace(/[()]/g, ''));
+        }
+        const finalPassage = txt.replace(/ *\([^)]*\) */g, " __________ ");
+        console.log(finalPassage);
 
-            for(let clue of Clues){
-                AsAWhole += clue.dataValues.gapWord + "#";
+        console.log(finalPassage);
+        return res.status(status_codes.SUCCESS).send(finalPassage);
+    }
+    else if(exercise_type === "fillgapsdescription"){
+        let ExerciseDesc = await Exercise.findOne({
+            where: { exercise_id: exercise_id },
+        });
+        let finalDesc = ExerciseDesc.dataValues.description
+        console.log(finalDesc);
+        return res.status(status_codes.SUCCESS).send(finalDesc);
+    }
+    else if(exercise_type === "fillgapsanswers"){
+        let Item = await item.findOne({
+            where: { exercise_id: exercise_id },
+        });
+        let Passage = await fillinthegaps.findOne({
+            where: { item_id: Item.dataValues.item_id },
+        });
+
+        let clues = []
+        const txt = Passage.dataValues.passage;
+        const regExp = /\(([^)]+)\)/g;
+        const matches = [...txt.match(regExp)];
+        console.log(matches);
+        for(let i = 0; i < matches.length; i++){
+            if(matches[i] !== ""){
+                clues.push(matches[i].replace(/[()]/g, ''));
             }
         }
-
-        console.log(AsAWhole);
-        return res.status(status_codes.SUCCESS).send(AsAWhole);
+        console.log(clues);
+        return res.status(status_codes.SUCCESS).send(clues);
     }
 };
 
