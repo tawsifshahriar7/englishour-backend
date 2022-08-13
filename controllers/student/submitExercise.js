@@ -92,8 +92,8 @@ const verify = async (req, res) => {
    console.log(submitted_answer);
  
    let count=0;
-   console.log("size : "+submitted_answer.size)
-   for(let i=0;i<submitted_answer.size;i++){
+   
+   for(let i=0;i<submitted_answer.referenceList.length;i++){
 
      let text = submitted_answer.submission[i];
      const myArray = text.split("#");
@@ -112,7 +112,7 @@ const verify = async (req, res) => {
    }
 
   
-    let  result = (count===submitted_answer.size)? true:false;
+    let  result = (count===submitted_answer.referenceList.length)? true:false;
 
 
     
