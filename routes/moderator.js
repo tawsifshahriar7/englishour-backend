@@ -18,6 +18,8 @@ const ModeratorNotification = require("../controllers/moderator/getModeratorNoti
 const ExerciseDetails = require("../controllers/moderator/getExInfo");
 const getExercisePreview = require("../controllers/moderator/getExercisePreview");
 const UpdateStatus = require("../controllers/moderator/approveExercise");
+const ModStats = require("../controllers/moderator/getModStats");
+const UpdateLevel = require("../controllers/moderator/updateLevel");
 
 
 router.post("/moderator/insert", auth, insert);
@@ -36,5 +38,7 @@ router.get("/moderator/notification/moderator_id", auth, ModeratorNotification);
 router.get("/moderator/exerciseDetails", auth, ExerciseDetails);
 router.get("/moderator/exercisePreview", auth, getExercisePreview);
 router.post("/moderator/approveExercise", auth, UpdateStatus);
+router.get("/moderator/getModStats", auth, ModStats);
+router.post("/moderator/updateLevel", auth, UpdateLevel);
 
 module.exports = router;
