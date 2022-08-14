@@ -29,7 +29,6 @@ const server = http.createServer(app);
 // const Gaps = require("./model/Gaps");
 // const FillInTheGapsHistory = require("./model/FillInTheGapsHistory");
 
-
 const db = require("./config/database");
 db.authenticate()
   .then(() => {
@@ -38,7 +37,7 @@ db.authenticate()
   .catch((err) => {
     console.log("Error: " + err);
   });
-db.sync({ logging: console.log, alter: true})
+db.sync({ logging: console.log, alter: true })
   .then(() => {
     console.log("Database synced");
   })
