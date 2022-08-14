@@ -93,7 +93,7 @@ const verify = async (req, res) => {
  
    let count=0;
    
-   for(let i=0;i<submitted_answer.referenceList.length;i++){
+   for(let i=0;i<submitted_answer.submission.length;i++){
 
      let text = submitted_answer.submission[i];
      const myArray = text.split("#");
