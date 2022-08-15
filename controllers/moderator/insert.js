@@ -328,7 +328,7 @@ const insert = async (req, res) => {
         return res.status(status_codes.ERROR).send(err_exercise);
       });
   }
-  else if(type === "fillinthegaps"){
+  else if(type === "fillgaps"){
     let passage = req.body.passage;
     let answers = []
     const txt = passage;
