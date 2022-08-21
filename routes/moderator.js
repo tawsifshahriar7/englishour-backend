@@ -21,7 +21,8 @@ const UpdateStatus = require("../controllers/moderator/approveExercise");
 const ModStats = require("../controllers/moderator/getModStats");
 const UpdateLevel = require("../controllers/moderator/updateLevel");
 const GraphChart = require("../controllers/moderator/graphChart");
-
+const ConsecutiveDetails = require("../controllers/moderator/exerciseDetails");
+const TreeView  = require("../controllers/moderator/TreeView");
 
 
 router.post("/moderator/insert", auth, insert);
@@ -43,6 +44,7 @@ router.post("/moderator/approveExercise", auth, UpdateStatus);
 router.get("/moderator/getModStats", auth, ModStats);
 router.post("/moderator/updateLevel", auth, UpdateLevel);
 router.get("/moderator/graphChart", auth, GraphChart);
-
+router.get("/moderator/getConsecutiveDetails", auth, ConsecutiveDetails);
+router.get("/moderator/getTreeView", auth, TreeView);
 
 module.exports = router;
