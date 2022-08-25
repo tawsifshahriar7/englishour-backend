@@ -330,6 +330,7 @@ const insert = async (req, res) => {
   }
   else if(type === "fillgaps"){
     let passage = req.body.passage;
+    console.log(passage);
     let answers = []
     const txt = passage;
     const regExp = /\(([^)]+)\)/g;
