@@ -88,20 +88,18 @@ const verify = async (req, res) => {
       }
     }
     return res.status(status_codes.SUCCESS).send(result);
-  }else if (exercise.dataValues.exercise_type === "fillinthegaps") {
+  } else if (exercise.dataValues.exercise_type === "fillinthegaps") {
+    //  console.log("aschi ami");
+    //  console.log(submitted_answer);
 
-   console.log("aschi ami");
-   console.log(submitted_answer);
- 
-   let count=0;
-   
-   for(let i=0;i<submitted_answer.referenceList.length;i++){
+    let count = 0;
 
-     let text = submitted_answer.submission[i];
-     const myArray = text.split("#");
-    // console.log(submitted_answer.reference);
-     console.log("expected :"+submitted_answer.referenceList[parseInt(myArray[0])]);
-     console.log("found :"+submitted_answer.shuffledList[parseInt(myArray[1])]);
+    for (let i = 0; i < submitted_answer.referenceList.length; i++) {
+      let text = submitted_answer.submission[i];
+      const myArray = text.split("#");
+      // console.log(submitted_answer.reference);
+      //  console.log("expected :"+submitted_answer.referenceList[parseInt(myArray[0])]);
+      //  console.log("found :"+submitted_answer.shuffledList[parseInt(myArray[1])]);
 
       if (
         submitted_answer.referenceList[parseInt(myArray[0])] ===

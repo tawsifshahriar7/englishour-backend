@@ -4,28 +4,33 @@ const Profile = require("../../model/profile");
 const status_codes = require("../../utils/status_code/status_code");
 
 const getTestQuestions = async (req, res) => {
-  const profile_id = 1;
-  let exercise_ids = [];
-  let exercises = [];
-  const nums = new Set();
-  while (nums.size !== 10) {
-    nums.add(Math.floor(Math.random() * 10) + 1);
-  }
-  exercise_ids = Array.from(nums);
-
-  const profile = Profile.findOne({
+  const profile_id = parseInt(req.Profile.profile_id);
+  Profile.findOne({
     attributes: ["current_level"],
     where: { profile_id: profile_id },
-  });
-  for (let i = 0; i < 10; i++) {
-    const exercise = await Exercise.findOne({
-      attributes: ["exercise_id"],
-      where: { exercise_id: exercise_ids[i] },
+  })
+    .then((level_data) => {
+      const level = level_data.dataValues.current_level;
+      Exercise.findAll({
+        attributes: ["exercise_id"],
+        where: { level: level },
+      })
+        .then((exercises) => {
+          const exercise_ids = exercises.map((exercise) => {
+            return exercise.dataValues.exercise_id;
+          });
+          const shuffled = exercise_ids.sort(() => 0.5 - Math.random());
+          const sliced = shuffled.slice(0, 10);
+          console.log(sliced);
+          res.status(status_codes.SUCCESS).json(sliced);
+        })
+        .catch((err) => {
+          res.status(status_codes.INTERNAL_SERVER_ERROR).json(err);
+        });
+    })
+    .catch((err) => {
+      res.status(status_codes.INTERNAL_SERVER_ERROR).json(err);
     });
-    exercises.push(exercise);
-  }
-  console.log(exercises);
-  res.status(status_codes.SUCCESS).json(exercises);
 };
 
 module.exports = getTestQuestions;
