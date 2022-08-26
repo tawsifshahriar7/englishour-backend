@@ -92,18 +92,12 @@ const verify = async (req, res) => {
     //  console.log("aschi ami");
     //  console.log(submitted_answer);
 
-<<<<<<< HEAD
-   console.log("aschi ami");
+
    console.log(submitted_answer);
  
    let count=0;
    
-   for(let i=0;i<submitted_answer.submission.length;i++){
-=======
-    let count = 0;
->>>>>>> 8701550853e27daee07da6c1ea641efed86fa3fc
-
-    for (let i = 0; i < submitted_answer.referenceList.length; i++) {
+    for (let i = 0; i < submitted_answer.submission.length; i++) {
       let text = submitted_answer.submission[i];
       const myArray = text.split("#");
       // console.log(submitted_answer.reference);
