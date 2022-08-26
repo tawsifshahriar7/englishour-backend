@@ -23,6 +23,13 @@ const insert = async (req, res) => {
   let description = req.body.description;
   let content = req.body.content;
 
+  console.log("type: "+type);
+  console.log("level: "+level);
+  console.log("tutorial_id: "+tutorial_id);
+  console.log("moderator_id: "+moderator_id);
+  console.log("description: "+description);
+  console.log("content: "+content);
+
   if (type === "sentenceshuffling") {
     let correct = req.body.correct;
     let correctSentences = correct.split("#");
@@ -328,8 +335,9 @@ const insert = async (req, res) => {
         return res.status(status_codes.ERROR).send(err_exercise);
       });
   }
-  else if(type === "fillinthegaps"){
+  else if(type === "fillgaps"){
     let passage = req.body.passage;
+    console.log(passage);
     let answers = []
     const txt = passage;
     const regExp = /\(([^)]+)\)/g;
