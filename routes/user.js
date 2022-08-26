@@ -24,6 +24,9 @@ const getCategories = require("../controllers/student/fetchCategories");
 const getTopics = require("../controllers/student/getTopics");
 const getTestQuestions = require("../controllers/student/test");
 const TestSubmission = require("../controllers/student/testSubmission");
+const getEntryTest = require("../controllers/student/entryTestFetch");
+const EntryTestSubmission = require("../controllers/student/entryTestSubmit");
+const setSuggestedLevel = require("../controllers/student/setSuggestedLevel");
 
 router.get("/user/info", auth, (req, res) => {
   userInfo(req, res);
@@ -90,5 +93,14 @@ router.get("/user/getTestQuestions", auth, profileAuth, (req, res) => {
 });
 router.post("/user/testSubmission", auth, profileAuth, (req, res) => {
   TestSubmission(req, res);
+});
+router.get("/user/getEntryTest", (req, res) => {
+  getEntryTest(req, res);
+});
+router.post("/user/entryTestSubmission", auth, profileAuth, (req, res) => {
+  EntryTestSubmission(req, res);
+});
+router.post("/user/setSuggestedLevel", auth, profileAuth, (req, res) => {
+  setSuggestedLevel(req, res);
 });
 module.exports = router;
