@@ -288,6 +288,45 @@ const verify = async (req, res) => {
     }
     let result_status = count === result.length ? true : false;
     return res.status(status_codes.SUCCESS).send(result_status);
+  }else if (exercise.dataValues.exercise_type === "readcomplete") {
+    for (let i = 0; i < items.length; i++) {
+      let readcomplete = await ReadComplete.findAll({
+        where: {
+          item_id: items[i].dataValues.item_id,
+        },
+      });
+
+      let rows = [];
+      Object.keys(readcomplete[0].dataValues.table).forEach((key) => {
+        rows.push(readcomplete[0].dataValues.table[key]);
+      });
+      rows = rows.slice(1);
+
+      let result = [];
+      rows.map((row,row_index) => {
+        row.map((cell,col_index) => {
+          if(cell.type === submitted_answer[row_index][col_index].type){
+              if(cell.content === submitted_answer[row_index][col_index].content){
+                result.push(true);
+              }else{
+                result.push(false);
+              }
+          }
+          else{
+            result.push(false);
+          }
+        });
+      });
+    }
+
+    let count = 0;
+    for (let i = 0; i < result.length; i++) {
+      if (result[i] === true) {
+        count++;
+      }
+    }
+    let result_status = count === result.length ? true : false;
+    return res.status(status_codes.SUCCESS).send(result_status);
   }
 };
 
