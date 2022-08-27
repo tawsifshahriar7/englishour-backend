@@ -1,12 +1,12 @@
 # What are Adverbs?
+
 Adverbs are words that modify verbs, adjectives or other adverbs.
 
 
 
 # Adverbs With Examples
 
-![partofspeech](images/adverb.jpg)
-
+![partofspeech](http://localhost:8080/images/adverb.jpg)
 
 - Mum thoughtfully prepared our Christmas lunch. (Modifying a Verb)
 - It was a very interesting experience to meet the President. (Modifying an Adjective)
@@ -15,14 +15,14 @@ Adverbs are words that modify verbs, adjectives or other adverbs.
 
 # Types of Adverbs With Examples
 
-There are several types of adverbs in English grammar. 
+There are several types of adverbs in English grammar.
 
 These types of adverbs are:
 
     1. adverbs of time
     2. manner
     3. place
-    4. degree and 
+    4. degree and
     5. frequency
 
 
@@ -31,5 +31,3 @@ These types of adverbs are:
 - She put her keys there. (Adverb of Place)
 - Rebekah’s painting was very beautiful. (Adverb of Degree)
 - Jimmy never works on the weekends these days. (Adverb of frequency)
-
-
