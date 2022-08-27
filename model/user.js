@@ -16,10 +16,15 @@ const User = db.define(
       type: db.Sequelize.STRING,
       allowNull: false,
     },
+    joinDate: {
+      type: db.Sequelize.DATE,
+      allowNull: true,
+    },
     token: {
       type: db.Sequelize.STRING,
       allowNull: true,
     },
+
   },
   {
     timestamps: false,
