@@ -92,11 +92,10 @@ const verify = async (req, res) => {
     //  console.log("aschi ami");
     //  console.log(submitted_answer);
 
+    console.log(submitted_answer);
 
-   console.log(submitted_answer);
- 
-   let count=0;
-   
+    let count = 0;
+
     for (let i = 0; i < submitted_answer.submission.length; i++) {
       let text = submitted_answer.submission[i];
       const myArray = text.split("#");
@@ -185,7 +184,7 @@ const verify = async (req, res) => {
       submitted_answer[i] = submitted_answer[i].toLowerCase();
       let response = {};
       response.correct_sentence =
-        sentenceshuffle[0].dataValues.correct_sentence;
+        sentenceshuffle[0].dataValues.correct_sentence.toLowerCase();
       let history = await History.findOne({
         where: {
           item_id: items[i].dataValues.item_id,
@@ -254,7 +253,7 @@ const verify = async (req, res) => {
       });
 
       for (let j = 0; j < groupwords.length; j++) {
-        let words = Words.findAll({
+        let words = await Words.findAll({
           where: {
             item_id: groupwords[j].dataValues.item_id,
           },
@@ -267,6 +266,7 @@ const verify = async (req, res) => {
         }
       }
     }
+    // console.log(correct_grouping);
     result = [];
     for (let i = 0; i < submitted_answer.length; i++) {
       for (let j = 0; j < correct_grouping.length; j++) {
