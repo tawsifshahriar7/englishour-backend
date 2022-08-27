@@ -28,6 +28,8 @@ const readcomplete = async (req, res) => {
     });
   }
   let result = {
+    no_rows: readcomplete[0].nrows,
+    no_cols: readcomplete[0].ncols,
     sentenceList: sentences,
     rowList: rows,
   };
