@@ -16,6 +16,7 @@ const getStats = async (req, res) => {
   let todayCount = await AttemptHistory.count({
     where: {
       profile_id: profile_id,
+      status: "solved",
       date: {
         [Op.between]: [
           new Date(year + "-" + month + "-" + date + " 00:00:00"),
@@ -27,6 +28,7 @@ const getStats = async (req, res) => {
   let yesterdayCount = await AttemptHistory.count({
     where: {
       profile_id: profile_id,
+      status: "solved",
       date: {
         [Op.between]: [
           new Date(year + "-" + month + "-" + (date - 1) + " 00:00:00"),
@@ -38,6 +40,7 @@ const getStats = async (req, res) => {
   let lastWeekCount = await AttemptHistory.count({
     where: {
       profile_id: profile_id,
+      status: "solved",
       date: {
         [Op.between]: [
           new Date(year + "-" + month + "-" + (date - 7) + " 00:00:00"),
@@ -47,9 +50,9 @@ const getStats = async (req, res) => {
     },
   });
   const stats = [
-    { day: 0, value: lastWeekCount },
-    { day: 1, value: yesterdayCount },
-    { day: 7, value: todayCount },
+    { day: 1, value: lastWeekCount },
+    { day: 2, value: yesterdayCount },
+    { day: 3, value: todayCount },
   ];
   res.status(status_codes.SUCCESS).json(stats);
 };

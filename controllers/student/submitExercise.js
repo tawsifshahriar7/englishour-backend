@@ -31,6 +31,7 @@ const verify = async (req, res) => {
         where: {
           item_id: items[i].dataValues.item_id,
         },
+        order: [["item_id", "ASC"]],
       });
       let history = await History.findOne({
         where: {
@@ -181,10 +182,9 @@ const verify = async (req, res) => {
           item_id: items[i].dataValues.item_id,
         },
       });
-      submitted_answer[i] = submitted_answer[i].toLowerCase();
       let response = {};
       response.correct_sentence =
-        sentenceshuffle[0].dataValues.correct_sentence.toLowerCase();
+        sentenceshuffle[0].dataValues.correct_sentence;
       let history = await History.findOne({
         where: {
           item_id: items[i].dataValues.item_id,
