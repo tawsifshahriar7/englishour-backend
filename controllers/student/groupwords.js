@@ -4,6 +4,28 @@ const Item = require("../../model/item");
 const GroupWords = require("../../model/groupwords");
 const Words = require("../../model/words");
 
+shuffle = (originalArray) => {
+  var array = [].concat(originalArray);
+  var currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+};
+
+
 const groupwords = async (req, res) => {
   let exercise_id = parseInt(req.query.exercise_id);
   let items = await Item.findAll({
@@ -33,7 +55,7 @@ const groupwords = async (req, res) => {
   }
   let result = {
     categoryList: categoryList,
-    wordList: wordList,
+    wordList: shuffle(wordList),
   };
   return res.status(status_codes.SUCCESS).send(result);
 };
