@@ -3,7 +3,9 @@ Nouns are words that name persons, places, things, ideas, animals, feelings, eve
 
 <br>
 
-# Definitions of Nouns With Examples
+# Nouns With Examples
+
+![partofspeech](images/noun23.jpg)
 
 - Jennifer is my best friend. (Naming a Person)
 - I went to Africa over the summer. (Naming a Place)
@@ -19,8 +21,15 @@ Nouns are words that name persons, places, things, ideas, animals, feelings, eve
 
 # Types of Nouns With Examples
 
-Nouns generally have 8 types. Here are the 8 types of nouns: 
-
+ Here are the 8 types of nouns:
+ 
+    1. proper nouns
+    2.  common nouns
+    3. concrete nouns
+    4. abstract nouns5.
+    6. collective nouns 
+    7. compound nouns
+    8. countable nouns and non-countable nouns
 
 ![partofspeech](images/nouns.png)
 
