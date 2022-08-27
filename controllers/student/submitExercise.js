@@ -297,21 +297,23 @@ const verify = async (req, res) => {
         },
       });
 
+      let table = [];
       let rows = [];
+
       Object.keys(readcomplete[0].dataValues.table).forEach((key) => {
-        rows.push(readcomplete[0].dataValues.table[key]);
+        table.push(readcomplete[0].dataValues.table[key]);
       });
-      rows = rows.slice(1);
+      
+      table.slice(1).forEach((row) => {
+        rows.push(row.slice(1));
+      });
+
 
       let result = [];
       rows.map((row,row_index) => {
         row.map((cell,col_index) => {
-          if(cell.type === submitted_answer[row_index][col_index].type){
-              if(cell.content === submitted_answer[row_index][col_index].content){
-                result.push(true);
-              }else{
-                result.push(false);
-              }
+          if(cell === submitted_answer[row_index][col_index]){
+            result.push(true);
           }
           else{
             result.push(false);

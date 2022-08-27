@@ -10,8 +10,11 @@ const readcomplete = async (req, res) => {
       exercise_id: exercise_id,
     },
   });
+
   let sentences = [];
-  let rows = [];
+  let table = [];
+  let rowList = [];
+
   for (let i = 0; i < items.length; i++) {
     let readcomplete = await ReadComplete.findAll({
       where: {
@@ -24,14 +27,20 @@ const readcomplete = async (req, res) => {
     });
 
     Object.keys(readcomplete[0].dataValues.table).forEach((key) => {
-      rows.push(readcomplete[0].dataValues.table[key]);
+      table.push(readcomplete[0].dataValues.table[key]);
+    });
+
+    table.slice(1).forEach((row) => {
+      rowList.push(row.slice(1));
     });
   }
+
   let result = {
     no_rows: readcomplete[0].nrows,
     no_cols: readcomplete[0].ncols,
     sentenceList: sentences,
-    rowList: rows,
+    first_row: table[0],
+    rows: rowList,
   };
   return res.status(status_codes.SUCCESS).send(result);
 };
