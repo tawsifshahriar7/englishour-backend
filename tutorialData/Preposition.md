@@ -2,7 +2,6 @@
 
 Prepositions are words that show the relationship between words in sentences.
 
-<br>
 
 # Prepositions With Examples
 
@@ -12,7 +11,6 @@ Prepositions are words that show the relationship between words in sentences.
 - Jennifer was born on Sunday, December 31, 2002.
 - Brad went to the park to play ball with his friends.
 
-<br>
 
 # Types of Prepositions With Examples
 
@@ -31,7 +29,6 @@ These 8 types of prepositions are:
 
    ![partofspeech](http://localhost:8080/images/prepos2.webp)
 
-<br>
 
 - He graduated before his trip Europe. (Preposition of Time)
 - Emma left her keys on the table in the spare room. (Preposition of Place)

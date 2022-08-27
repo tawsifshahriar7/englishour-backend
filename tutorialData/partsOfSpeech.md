@@ -2,13 +2,11 @@
 
 We can categorize English words into 9 basic types called "parts of speech" or "word classes". It's quite important to recognize parts of speech. This helps you to analyze sentences and understand them. It also helps you to construct good sentences.
 
-<br>
 
 # Types of Parts Of Speech
 
 This is a summary of the 9 parts of speech\*. You can find more detail if you click on each part of speech.
 
-<br>
 
 ![partofspeech](http://localhost:8080/images/pos.webp)
 
@@ -28,7 +26,6 @@ This is a summary of the 9 parts of speech\*. You can find more detail if you cl
 
 ---
 
-<br>
 
 # Parts of Speech Examples
 
@@ -38,49 +35,42 @@ Here are some examples of sentences made with different English parts of speech:
 | ------ |
 | Stop ! |
 
-<br>
 
 | Noun | Verb   |
 | ---- | ------ |
 | John | works. |
 
-<br>
 
 | Noun | Verb | Verb     |
 | ---- | ---- | -------- |
 | John | is   | working. |
 
-<br>
 
 | Pronoun | Verb  | Noun     |
 | ------- | ----- | -------- |
 | She     | loves | animals. |
 
-<br>
 
 | Noun | Verb   | Noun    | Adverb |
 | ---- | ------ | ------- | ------ |
 | Tara | speaks | English | well.  |
 
-<br>
+
 
 | Noun | Verb   | Adjective | Noun     |
 | ---- | ------ | --------- | -------- |
 | Tara | speaks | good      | English. |
 
-<br>
 
 | Pronoun | Verb | Preposition | Determiner | Noun    | Adverb   |
 | ------- | ---- | ----------- | ---------- | ------- | -------- |
 | She     | ran  | to          | the        | station | quickly. |
 
-<br>
 
 | Pronoun | Verb  | Adjective | Noun   | Conjunction | Pronoun | Verb | Pronoun |
 | ------- | ----- | --------- | ------ | ----------- | ------- | ---- | ------- |
 | She     | likes | big       | snakes | but         | I       | hate | them.   |
 
-<br>
 
 | Interjection | Pronoun | Conjunction | Determiner | Adjective | Noun | Verb | Preposition | Noun   | Adverb  |
 | ------------ | ------- | ----------- | ---------- | --------- | ---- | ---- | ----------- | ------ | ------- |
