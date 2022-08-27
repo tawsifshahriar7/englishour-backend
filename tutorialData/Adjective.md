@@ -2,7 +2,7 @@
 
 Adjectives are words that modify or describe nouns or pronouns.
 
-<br>
+
 
 # Adjectives With Examples
 
@@ -11,7 +11,7 @@ Adjectives are words that modify or describe nouns or pronouns.
 - Rebekah painted a beautiful landscape. (Adjective Modifying Noun)
 - She is generous. (Adjective Describing Pronoun)
 
-<br>
+
 
 # Types of Adjectives With Examples
 
@@ -28,7 +28,6 @@ There are generally 8 types of adjectives.
 
 ![partofspeech](http://localhost:8080/images/adj2.jpg)
 
-<br>
 
 - English grammar is learned at school. (Proper Adjective)
 - The weary traveler stayed overnight. (Descriptive Adjective)

@@ -2,7 +2,6 @@
 
 Pronouns are used in place of a specific noun used earlier in a sentence. They are helpful when the writer wants to avoid repetitive use of a particular noun such as a name
 
-<br>
 
 # Pronouns With Examples
 
@@ -14,7 +13,6 @@ Pronouns are used in place of a specific noun used earlier in a sentence. They a
 - The boss appreciated his workers and he gave them the day off. (He Replaces Boss and Them Replaces Workers)
 - James is my younger brother and he is very talented. (He Replaces James)
 
-<br>
 
 # Types of Pronouns With Examples
 
@@ -33,7 +31,6 @@ They are:
 
 ![partofspeech](http://localhost:8080/images/pron2.jpg)
 
-<br>
 
 - The ladies went shopping and they bought some new clothing. (Personal Pronoun)
 - What is your favorite sport? (Interrogative Pronoun)

@@ -2,7 +2,7 @@
 
 Adverbs are words that modify verbs, adjectives or other adverbs.
 
-<br>
+
 
 # Adverbs With Examples
 
@@ -12,7 +12,6 @@ Adverbs are words that modify verbs, adjectives or other adverbs.
 - It was a very interesting experience to meet the President. (Modifying an Adjective)
 - Brad played the game extremely well for his age. (Modifying an Adverb)
 
-<br>
 
 # Types of Adverbs With Examples
 
@@ -26,7 +25,6 @@ These types of adverbs are:
     4. degree and
     5. frequency
 
-<br>
 
 - My parents will be home soon. (Adverb of Time)
 - The builders worked carefully on the building site. (Adverb of Manner)
