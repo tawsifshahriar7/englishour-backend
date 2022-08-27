@@ -95,7 +95,7 @@ router.get("/user/getTestQuestions", auth, profileAuth, (req, res) => {
 router.post("/user/testSubmission", auth, profileAuth, (req, res) => {
   TestSubmission(req, res);
 });
-router.get("/user/getEntryTest", (req, res) => {
+router.get("/user/getEntryTest", auth, profileAuth, (req, res) => {
   getEntryTest(req, res);
 });
 router.post("/user/entryTestSubmission", auth, profileAuth, (req, res) => {
