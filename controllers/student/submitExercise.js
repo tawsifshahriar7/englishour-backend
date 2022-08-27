@@ -303,9 +303,9 @@ const verify = async (req, res) => {
         table.push(readcomplete[0].dataValues.table[key]);
       });
 
-
+      let rows = table.slice(1);
       let result = [];
-      table.map((row,row_index) => {
+      rows.map((row,row_index) => {
         row.map((cell,col_index) => {
           if(cell === submitted_answer[row_index][col_index]){
             result.push(true);
