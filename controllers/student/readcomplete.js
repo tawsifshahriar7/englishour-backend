@@ -13,7 +13,6 @@ const readcomplete = async (req, res) => {
 
   let sentences = [];
   let table = [];
-  let rowList = [];
 
   for (let i = 0; i < items.length; i++) {
     let readcomplete = await ReadComplete.findAll({
@@ -29,10 +28,6 @@ const readcomplete = async (req, res) => {
     Object.keys(readcomplete[0].dataValues.table).forEach((key) => {
       table.push(readcomplete[0].dataValues.table[key]);
     });
-
-    table.slice(1).forEach((row) => {
-      rowList.push(row.slice(1));
-    });
   }
 
   let result = {
@@ -40,7 +35,7 @@ const readcomplete = async (req, res) => {
     no_cols: readcomplete[0].ncols,
     sentenceList: sentences,
     first_row: table[0],
-    rows: rowList,
+    rows: table.slice(1),
   };
   return res.status(status_codes.SUCCESS).send(result);
 };

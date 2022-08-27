@@ -298,19 +298,14 @@ const verify = async (req, res) => {
       });
 
       let table = [];
-      let rows = [];
 
       Object.keys(readcomplete[0].dataValues.table).forEach((key) => {
         table.push(readcomplete[0].dataValues.table[key]);
       });
-      
-      table.slice(1).forEach((row) => {
-        rows.push(row.slice(1));
-      });
 
 
       let result = [];
-      rows.map((row,row_index) => {
+      table.map((row,row_index) => {
         row.map((cell,col_index) => {
           if(cell === submitted_answer[row_index][col_index]){
             result.push(true);
