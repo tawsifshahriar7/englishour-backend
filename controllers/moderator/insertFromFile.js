@@ -14,6 +14,7 @@ const Moderator = require("../../model/moderator");
 
 const ModeratorNotification = require("../../model/moderator_notification");
 const ModeratorNotificationStatus = require("../../model/moderator_notification_status");
+// const fs = require("fs");
 
 const insertFromFile = async (req, res) => {
     console.log("Inserting from file");
@@ -25,6 +26,8 @@ const insertFromFile = async (req, res) => {
         let tutorial_id = req.body[e].tutorial_id;
         let moderator_id = req.body[e].moderator_id;
         let description = req.body[e].Description;
+
+        
 
         console.log("type: "+type);
         console.log("level: "+level);
@@ -413,7 +416,121 @@ const insertFromFile = async (req, res) => {
                 // return res.status(status_codes.ERROR).send(err_exercise);
             });
         }
+
+        
+        // else if(type == "readcomplete")
+        // {
+
+        //     let nrows = req.body[e].nrows;
+        //     let ncols = req.body[e].ncols;
+        //     const Grid = req.body[e].Grid;
+        //     //convert Grid to Json
+        //     //Grid = JSON.parse(Grid);
+        //     let Sentences = req.body[e].Sentences;
+        //     //split Sentences by #
+        //     Sentences = Sentences.split("#");
+        //     //convert string array to json array
+        //     temp = [];
+        //     for(let i=0;i<Sentences.length;i++){
+        //         temp.push({"service": Sentences[i]});
+        //     }
+
+        //     //convert temp to Json
+        //     const sentence_list = temp;
+
+        //     sentence_list = JSON.stringify(sentence_list);
+        //     Grid = JSON.stringify(Grid);
+
+        //     //Convert Grid to Json
+        //     //Grid = JSON.parse(Grid);
+
+        //     //write that to log file named Grid.txt
+        //     fs.writeFile('Grid.txt', Grid, function (err) {
+        //         if (err) throw err;
+        //         console.log('Saved!');
+        //     }
+        //     );
+
+        //     //write that to log file named Sentences.txt
+        //     fs.writeFile('Sentences.txt', sentence_list, function (err) {
+        //         if (err) throw err;
+        //         console.log('Saved!');
+        //     }
+        //     );
+
+
+        //     console.log("Sentences: "+sentence_list);
+        //     console.log("Grid: "+Grid);
+
+            
+
+        //     let content = "A Table completion exercise is uploaded";
+
+        //     exercise.create({
+        //         exercise_type: type,
+        //         level: level,
+        //         approval_status: "pending",
+        //         description: description,
+        //         moderator_id: moderator_id,
+        //         tutorial_id: tutorial_id,
+        //         moderated_by: selected_moderator_for_review,
+        //     })
+        //     .then((result_exercise) => {
+        //         exercise_id_reference = result_exercise.dataValues.exercise_id;
+        //         ModeratorNotification.create({
+        //             content: content+"#"+exercise_id_reference+"#"+moderator_id,
+        //             status: "pending",
+        //         }).then((result_notification) => {
+        //             // console.log(result_notification)
+        //         }).catch((err_notification) => {
+        //             console.log(err_notification);
+        //         });
+        //         let item_id_reference = 0;
+        //         item.create({
+        //             exercise_id: exercise_id_reference,
+        //         })
+        //         .then((result_item) => {
+        //             item_id_reference = result_item.dataValues.item_id;
+        //             ReadComplete.create({
+        //                 item_id: item_id_reference,
+        //                 nrows: nrows,
+        //                 ncols: ncols,
+        //                 sentence_list: sentence_list,
+        //                 table: Grid,
+        //             })
+        //             .then((result_readcomplete) => {
+        //                 // return res.status(status_codes.SUCCESS).send(result_readcomplete);
+        //             }).catch((err_readcomplete) => {
+        //                 console.log(err_readcomplete);
+        //                 console.log(sentence_list);
+        //                 console.log(Grid);
+        //                 // return res.status(status_codes.ERROR).send(err_readcomplete);
+        //             }
+        //             );
+        //         })
+        //         .catch((err_item) => {
+        //             console.log(err_item);
+        //             // return res.status(status_codes.ERROR).send(err_item);
+        //         }
+        //         );
+
+        //     })
+        //     .catch((err_exercise) => {
+        //         console.log(err_exercise);
+        //         // return res.status(status_codes.ERROR).send(err_exercise);
+        //     }
+        //     );
+        // }
+
+        else
+        {
+            console.log("empty line");
+            break;
+        }
     }
+
+
+
     return res.status(status_codes.SUCCESS).send("Done");        
 };
 
