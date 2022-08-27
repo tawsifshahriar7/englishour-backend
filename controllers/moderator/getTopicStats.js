@@ -36,6 +36,12 @@ const TopicStats = async (req, res) => {
             topic_name: topic_name,
             category_name: category_name,
             no_of_attempts: 0,
+            no_of_readComplete: 0,
+            no_of_shuffledSentence: 0,
+            no_of_letterChange: 0,
+            no_of_groupWords: 0,
+            no_of_fillInTheGaps: 0,
+            no_of_solved: 0,
         };
 
         let no_of_attempts = 0;
@@ -72,12 +78,28 @@ const TopicStats = async (req, res) => {
                     where: { exercise_id: exercise_id },
                     attributes: ['item_id'],
                 });
+
+                if(exercise.dataValues.exercise_type == "readcomplete"){
+                    topic_individual_stats.no_of_readComplete++;
+                }
+                else if(exercise.dataValues.exercise_type == "sentenceshuffling"){
+                    topic_individual_stats.no_of_shuffledSentence++;
+                }
+                else if(exercise.dataValues.exercise_type == "changeletter"){
+                    topic_individual_stats.no_of_letterChange++;
+                }
+                else if(exercise.dataValues.exercise_type == "categorizewords"){
+                    topic_individual_stats.no_of_groupWords++;
+                }
+                else if(exercise.dataValues.exercise_type == "fillgaps"){
+                    topic_individual_stats.no_of_fillInTheGaps++;
+                }
                 
                 for (let item of items) {
                     let item_id = item.dataValues.item_id;
                     let item_attempts = await History.findAll({
                         where: { item_id: item_id },
-                        attributes: ['item_id', 'nattempts'],
+                        attributes: ['item_id', 'nattempts', 'status'],	
                     });
 
     
@@ -86,6 +108,10 @@ const TopicStats = async (req, res) => {
                         console.log("item_id", item_id);
                         console.log("item_attempt", item_attempt.dataValues.nattempts);
                         no_of_attempts += item_attempt.dataValues.nattempts;
+                        if(item_attempt.dataValues.status == "solved")
+                        {
+                            topic_individual_stats.no_of_solved++;
+                        }
                     }
                 }
             }
