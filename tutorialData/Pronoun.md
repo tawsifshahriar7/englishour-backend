@@ -1,12 +1,11 @@
 # What are Pronouns?
+
 Pronouns are used in place of a specific noun used earlier in a sentence. They are helpful when the writer wants to avoid repetitive use of a particular noun such as a name
 
-<br>
 
 # Pronouns With Examples
 
-![partofspeech](images/pronoun.webp)
-
+![partofspeech](http://localhost:8080/images/pronoun.webp)
 
 - Dad, will you help me with my work? (You Replaces Dad)
 - The electrician fixed the problem and he was very professional in the process. (He replaces Electrician)
@@ -14,28 +13,23 @@ Pronouns are used in place of a specific noun used earlier in a sentence. They a
 - The boss appreciated his workers and he gave them the day off. (He Replaces Boss and Them Replaces Workers)
 - James is my younger brother and he is very talented. (He Replaces James)
 
-<br>
 
 # Types of Pronouns With Examples
 
 Pronouns generally have 8 types.
 
 They are:
- 
+
     1. personal pronouns
     2. interrogative pronouns
-    3. possessive pronouns 
+    3. possessive pronouns
     4. demonstrative pronouns
     5. indefinite pronouns
     6. relative pronouns
     7. reflexive pronouns
     8. intensive pronouns
 
-
-![partofspeech](images/pron2.jpg)
-
-<br>
-
+![partofspeech](http://localhost:8080/images/pron2.jpg)
 
 
 - The ladies went shopping and they bought some new clothing. (Personal Pronoun)
