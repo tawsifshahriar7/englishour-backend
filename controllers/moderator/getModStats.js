@@ -107,7 +107,11 @@ const ModStats = async (req, res) => {
             //     no_of_solves++;
             // }
         }
-
+        
+        // if(exerciseDetails.no_of_attempts != 0)
+        // {
+        //     allExerciseDetails.push(exerciseDetails);
+        // }
         allExerciseDetails.push(exerciseDetails);
     }
 
