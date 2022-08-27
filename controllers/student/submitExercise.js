@@ -39,6 +39,7 @@ const verify = async (req, res) => {
           profile_id: req.profile.profile_id,
         },
       });
+      console.log(submitted_answer[i]);
       submitted_answer[i] = submitted_answer[i].toLowerCase();
       if (letterchange[0].dataValues.answer === submitted_answer[i]) {
         result.push(true);
