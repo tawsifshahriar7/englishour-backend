@@ -6,6 +6,7 @@ const LetterChange = require("../../model/letterchange");
 const FillInTheGaps = require("../../model/fillinthegaps");
 const SentenceShuffle = require("../../model/sentenceshuffle");
 const GroupWords = require("../../model/groupwords");
+const ReadComplete = require("../../model/readcomplete");
 const Words = require("../../model/words");
 const History = require("../../model/history");
 
@@ -302,6 +303,8 @@ const verify = async (req, res) => {
       Object.keys(readcomplete[0].dataValues.table).forEach((key) => {
         table.push(readcomplete[0].dataValues.table[key]);
       });
+
+      console.log(submitted_answer);
 
       let rows = table.slice(1);
       let result = [];
