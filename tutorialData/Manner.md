@@ -1,8 +1,7 @@
 # Common Manners in Day to Day Life
 
-
-![partofspeech](images/manner.jpg)
+![partofspeech](http://localhost:8080/images/manner.jpg)
 
 <br>
 
-![partofspeech](images/goodman.jpg)
+![partofspeech](http://localhost:8080/images/goodman.jpg)

@@ -1,11 +1,12 @@
 # What are Prepositions?
+
 Prepositions are words that show the relationship between words in sentences.
 
 <br>
 
 # Prepositions With Examples
 
-![partofspeech](images/prepos.webp)
+![partofspeech](http://localhost:8080/images/prepos.webp)
 
 - Peter found his keys under the newspaper.
 - Jennifer was born on Sunday, December 31, 2002.
@@ -15,22 +16,22 @@ Prepositions are words that show the relationship between words in sentences.
 
 # Types of Prepositions With Examples
 
- There are generally 8 types of prepositions .
- 
-  These 8 types of prepositions are: 
-  1. prepositions of time
-  2. place
-  3. movement
-  4. manner
-  5. measure
-  6. source
-  7. possession and 
-  8. agent or instrument
+There are generally 8 types of prepositions .
 
-     ![partofspeech](images/prepos2.webp)
+These 8 types of prepositions are:
+
+1. prepositions of time
+2. place
+3. movement
+4. manner
+5. measure
+6. source
+7. possession and
+8. agent or instrument
+
+   ![partofspeech](http://localhost:8080/images/prepos2.webp)
 
 <br>
-
 
 - He graduated before his trip Europe. (Preposition of Time)
 - Emma left her keys on the table in the spare room. (Preposition of Place)
