@@ -2,6 +2,5 @@
 
 ![partofspeech](images/greet2.jpg)
 
-<br>
 
 ![partofspeech](images/greetings.jpg)

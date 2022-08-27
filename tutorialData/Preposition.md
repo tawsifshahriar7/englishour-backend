@@ -1,7 +1,6 @@
 # What are Prepositions?
 Prepositions are words that show the relationship between words in sentences.
 
-<br>
 
 # Prepositions With Examples
 
@@ -11,7 +10,6 @@ Prepositions are words that show the relationship between words in sentences.
 - Jennifer was born on Sunday, December 31, 2002.
 - Brad went to the park to play ball with his friends.
 
-<br>
 
 # Types of Prepositions With Examples
 
@@ -29,7 +27,6 @@ Prepositions are words that show the relationship between words in sentences.
 
      ![partofspeech](images/prepos2.webp)
 
-<br>
 
 
 - He graduated before his trip Europe. (Preposition of Time)

@@ -1,7 +1,6 @@
 # What are Nouns?
 Nouns are words that name persons, places, things, ideas, animals, feelings, events, qualities and actions.
 
-<br>
 
 # Nouns With Examples
 
@@ -17,7 +16,6 @@ Nouns are words that name persons, places, things, ideas, animals, feelings, eve
 - It took great courage to admit he was wrong. (Naming a Quality)
 - The landing of the aircraft was dangerous. (Naming an Action)
 
-<br>
 
 # Types of Nouns With Examples
 
@@ -33,7 +31,6 @@ Nouns are words that name persons, places, things, ideas, animals, feelings, eve
 
 ![partofspeech](images/nouns.png)
 
-<br>
 
 - David is a biblical name. (Proper Noun)
 - Where is the toy? (Common Noun)

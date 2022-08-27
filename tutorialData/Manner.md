@@ -3,6 +3,5 @@
 
 ![partofspeech](images/manner.jpg)
 
-<br>
 
 ![partofspeech](images/goodman.jpg)

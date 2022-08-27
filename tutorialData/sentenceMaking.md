@@ -4,11 +4,15 @@
 
 # Rule 1
 ---
-    Whenever we use [noun], you can replace it with a [pronoun]. For example, you can say “Sam is tired,” or you can say “He is tired.” Both are correct.
+Whenever we use [noun], you can replace it with a [pronoun].
+
+For example, you can say “Sam is tired,” or you can say “He is tired.” Both are correct.
 
 # Rule 2
 ---
-     Whenever we use “is,” you will need to replace it with the correct form of “to be.” Choose the right form based on this list for the present tense:
+Whenever we use “is,” you will need to replace it with the correct form of “to be.”
+
+Choose the right form based on this list for the present tense:
 
 - I am.
 - He / she / it is.
@@ -19,11 +23,10 @@ And this list for the past tense:
 - I / he / she / it was.
 - You / they / we were.
 
-<br>
 
 ## That’s all! Now you are ready to begin.
 
-<br>
+
 
 # Making Statements About the Present
 
@@ -43,7 +46,6 @@ And this list for the past tense:
         You are wonderful.
         The Empire State Building is tall.
 
-<br>
 
 2. Stating the location of something or someone.
 
@@ -65,7 +67,7 @@ And this list for the past tense:
         The dog is here.
         The men are over there.
 
-<br>
+
 
 3. Explaining what someone is doing.
 
@@ -83,7 +85,6 @@ And this list for the past tense:
         The cat is napping.
         Kate is singing.
 
-<br>
 
 4. Stating what someone does for a living or a hobby.
 
@@ -101,7 +102,6 @@ And this list for the past tense:
         The cat naps.
         Kate sings.
 
-<br>
 
 5. Expressing feelings.
 
@@ -124,8 +124,7 @@ And this list for the past tense:
         She wants to sleep.
         She needs sleep.
 
-    <br>
-
+   
 6. Making a suggestion.
 
    **Form:**
@@ -143,7 +142,7 @@ And this list for the past tense:
         Please move.
         excuse me.
 
-    <br>
+ 
 # Making Statements About the Past
 
 7. Describing something or someone in the past.
@@ -162,7 +161,6 @@ And this list for the past tense:
         You were wonderful. (…You played the violin so well in the concert.)
         The Empire State Building was tall. (…Until the giant apes tore it down.)
 
-<br>
 
 8. Stating the location of something or someone in the past.
 
@@ -223,7 +221,6 @@ And this list for the past tense:
         We are going to eat.
         The baby is going to sleep.
 
-<br>
 
 11. Stating when something will happen.
 
@@ -242,8 +239,6 @@ And this list for the past tense:
         The train will leave at 5:00 AM.
         I will visit my parents in October.
         Anthony is going to dance tomorrow.
-
-<br>
 
 # Making Negative Statements
 
@@ -284,7 +279,6 @@ And this list for the past tense:
         I was not sleeping. (…While the teacher gave her lesson.)
         The customer did not pay. (…At all. How terrible!)
 
-<br>
 
 14. Stating what someone will not do in the future.
 

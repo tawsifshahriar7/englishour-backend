@@ -3,20 +3,17 @@ Verbs are words that show action or state-of-being. Every sentence requires a ve
 
 Action verbs show action or ownership; whereas, state-of-being verbs renames the subject
 
-<br>
 
 # Definitions of Verbs With Examples
 
 ![partofspeech](images/verb.png)
 
-<br>
 
 - Jimmy rode his new bike to school. (Action Verb)
 - Jimmy is the most popular boy in school. (State-of-being Verb)
 - Mary gave her money to charity. (Action Verb)
 - Mary is very generous with her money. (State-of-being Verb)
 
-<br>
 
 # Types of Verbs With Examples
 
