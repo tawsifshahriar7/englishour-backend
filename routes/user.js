@@ -28,6 +28,7 @@ const getEntryTest = require("../controllers/student/entryTestFetch");
 const EntryTestSubmission = require("../controllers/student/entryTestSubmit");
 const setSuggestedLevel = require("../controllers/student/setSuggestedLevel");
 const getStats = require("../controllers/student/getStats");
+const readcomplete = require("../controllers/student/readcomplete");
 
 router.get("/user/info", auth, (req, res) => {
   userInfo(req, res);
@@ -53,8 +54,11 @@ router.get("/user/fillinthegaps", auth, profileAuth, (req, res) => {
 router.get("/user/sentenceshuffle", auth, profileAuth, (req, res) => {
   sentenceshuffle(req, res);
 });
-router.get("/user/groupwords", (req, res) => {
+router.get("/user/groupwords", auth, profileAuth, (req, res) => {
   groupwords(req, res);
+});
+router.get("/user/readcomplete", auth, profileAuth, (req, res) => {
+  readcomplete(req, res);
 });
 router.post("/user/submitExercise", auth, profileAuth, (req, res) => {
   submitExercise(req, res);

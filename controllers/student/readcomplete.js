@@ -13,26 +13,26 @@ const readcomplete = async (req, res) => {
 
   let sentences = [];
   let table = [];
+  let readcompletes = [];
 
   for (let i = 0; i < items.length; i++) {
-    let readcomplete = await ReadComplete.findAll({
+    readcompletes = await ReadComplete.findAll({
       where: {
         item_id: items[i].dataValues.item_id,
       },
     });
 
-    Object.keys(readcomplete[0].dataValues.sentence_list).forEach((key) => {
-      sentences.push(readcomplete[0].dataValues.sentence_list[key]);
+    Object.keys(readcompletes[0].dataValues.sentence_list).forEach((key) => {
+      sentences.push(readcompletes[0].dataValues.sentence_list[key]);
     });
 
-    Object.keys(readcomplete[0].dataValues.table).forEach((key) => {
-      table.push(readcomplete[0].dataValues.table[key]);
+    Object.keys(readcompletes[0].dataValues.table).forEach((key) => {
+      table.push(readcompletes[0].dataValues.table[key]);
     });
   }
-
   let result = {
-    no_rows: readcomplete[0].nrows,
-    no_cols: readcomplete[0].ncols,
+    no_rows: readcompletes[0].dataValues.nrows,
+    no_cols: readcompletes[0].dataValues.ncols,
     sentenceList: sentences,
     first_row: table[0],
     rows: table.slice(1),

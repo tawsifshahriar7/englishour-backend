@@ -6,6 +6,7 @@ const LetterChange = require("../../model/letterchange");
 const FillInTheGaps = require("../../model/fillinthegaps");
 const SentenceShuffle = require("../../model/sentenceshuffle");
 const GroupWords = require("../../model/groupwords");
+const ReadComplete = require("../../model/readcomplete");
 const Words = require("../../model/words");
 const History = require("../../model/history");
 
@@ -289,7 +290,7 @@ const verify = async (req, res) => {
     }
     let result_status = count === result.length ? true : false;
     return res.status(status_codes.SUCCESS).send(result_status);
-  }else if (exercise.dataValues.exercise_type === "readcomplete") {
+  } else if (exercise.dataValues.exercise_type === "readcomplete") {
     for (let i = 0; i < items.length; i++) {
       let readcomplete = await ReadComplete.findAll({
         where: {
@@ -303,14 +304,12 @@ const verify = async (req, res) => {
         table.push(readcomplete[0].dataValues.table[key]);
       });
 
-
       let result = [];
-      table.map((row,row_index) => {
-        row.map((cell,col_index) => {
-          if(cell === submitted_answer[row_index][col_index]){
+      table.map((row, row_index) => {
+        row.map((cell, col_index) => {
+          if (cell === submitted_answer[row_index][col_index]) {
             result.push(true);
-          }
-          else{
+          } else {
             result.push(false);
           }
         });
