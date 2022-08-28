@@ -27,7 +27,7 @@ const TreeView = async (req, res) => {
     let exercises = await Exercise.findAll({
         where: {
             //for testing purposes,  get exercises that are pending
-            approval_status: "pending",	
+            approval_status: "approved",	
             //approval_status: "approved",
         },
         attributes: ['exercise_id', 'exercise_type', 'tutorial_id', "level"],
