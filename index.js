@@ -28,6 +28,7 @@ const server = http.createServer(app);
 // const FillInTheGaps = require("./model/FillInTheGaps");
 // const Gaps = require("./model/Gaps");
 // const FillInTheGapsHistory = require("./model/FillInTheGapsHistory");
+// const User = require('./model/user');
 
 const db = require("./config/database");
 db.authenticate()

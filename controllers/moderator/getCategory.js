@@ -10,7 +10,7 @@ const CategoryDetails = async (req, res) => {
   for (let category of categories) {
     categoryDetails.push(category.dataValues);
   }
-  console.log(categoryDetails);
+  console.log("category Details: ", categoryDetails);
   return res.status(status_codes.SUCCESS).send(categoryDetails);
 };
 

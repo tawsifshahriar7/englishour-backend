@@ -30,7 +30,6 @@ const readcomplete = async (req, res) => {
       table.push(readcompletes[0].dataValues.table[key]);
     });
   }
-
   let result = {
     no_rows: readcompletes[0].dataValues.nrows,
     no_cols: readcompletes[0].dataValues.ncols,
