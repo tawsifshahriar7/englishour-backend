@@ -16,7 +16,7 @@ const topicDetails = async (req, res) => {
   for (let topic of topics) {
     topicDetails.push(topic.dataValues);
   }
-  console.log(topicDetails);
+  console.log("topic details: ", topicDetails);
   return res.status(status_codes.SUCCESS).send(topicDetails);
 };
 
