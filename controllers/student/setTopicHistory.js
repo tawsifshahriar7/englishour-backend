@@ -14,7 +14,7 @@ const setAcheivement = async (req, res) => {
         });
         if (topicHistory) {
         return res
-            .status(status_codes.SUC)
+            .status(status_codes.SUCCESS)
             .json({ message: "Topic already exists" });
         }
         await TopicHistory.create({

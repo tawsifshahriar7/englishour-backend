@@ -112,7 +112,7 @@ router.post("/user/setSuggestedLevel", auth, profileAuth, (req, res) => {
 router.get("/user/getStats", auth, profileAuth, (req, res) => {
   getStats(req, res);
 });
-router.get("/user/setAchievement", auth, profileAuth, (req, res) => {
+router.post("/user/setAchievement", auth, profileAuth, (req, res) => {
   setAcheivement(req, res);
 });
 module.exports = router;
