@@ -29,7 +29,6 @@ const getEntryTest = require("../controllers/student/entryTestFetch");
 const EntryTestSubmission = require("../controllers/student/entryTestSubmit");
 const setSuggestedLevel = require("../controllers/student/setSuggestedLevel");
 const getStats = require("../controllers/student/getStats");
-const readcomplete = require("../controllers/student/readcomplete");
 
 router.get("/user/info", auth, (req, res) => {
   userInfo(req, res);
