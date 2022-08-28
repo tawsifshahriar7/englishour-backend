@@ -19,7 +19,7 @@ const NotificationInfo = async (req, res) => {
         console.log("respective_exercise_id: ",respective_exercise_id);
         let exercise = await Exercise.findOne({
             where: {
-                exercise_id: respective_exercise_id,
+                exercise_id: parseInt(respective_exercise_id),
             },
         });
         console.log("exercise in notification: ", exercise);
