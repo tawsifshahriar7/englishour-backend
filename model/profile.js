@@ -48,6 +48,11 @@ const Profile = db.define(
       type: db.Sequelize.INTEGER,
       allowNull: true,
     },
+    entryTest: {
+      type: db.Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
   },
   {
     timestamps: false,

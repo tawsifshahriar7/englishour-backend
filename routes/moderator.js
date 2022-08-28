@@ -25,6 +25,8 @@ const AllGraphs = require("../controllers/moderator/allGraphs");
 
 const ConsecutiveDetails = require("../controllers/moderator/exerciseDetails");
 const TreeView  = require("../controllers/moderator/TreeView");
+const TopicStats = require("../controllers/moderator/getTopicStats");
+const insertFromFile = require("../controllers/moderator/insertFromFile");
 
 const SetCategory = require("../controllers/moderator/setCategory");
 
@@ -53,6 +55,8 @@ router.get("/moderator/allGraphs", auth, AllGraphs);
 
 router.get("/moderator/getConsecutiveDetails", auth, ConsecutiveDetails);
 router.get("/moderator/getTreeView", auth, TreeView);
+router.get("/moderator/getTopicStats", auth, TopicStats);
+router.post("/moderator/insertFromFile", auth, insertFromFile);
 
 
 router.post("/moderator/setCategory", auth, SetCategory);

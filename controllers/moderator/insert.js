@@ -23,6 +23,62 @@ const insert = async (req, res) => {
   let description = req.body.description;
   let content = req.body.content;
 
+  console.log("type: "+type);
+  console.log("level: "+level);
+  console.log("tutorial_id: "+tutorial_id);
+  console.log("moderator_id: "+moderator_id);
+  console.log("description: "+description);
+  console.log("content: "+content);
+
+  function delay(delayInms) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(2);
+      }, delayInms);
+    });
+  }
+  delay(1000);
+
+
+  let moderator_ids_in_exercise = [];
+  let moderator_ids_in_moderator = [];
+  let moderator_status_in_moderator = [];
+  let selected_moderator_for_review = 0;
+  let assignment_count = 99999;
+  let temp_count = 0;
+  let exerciseDetails = await exercise.findAll({
+    where: {},
+  });
+  for (let eachExercise of exerciseDetails) {
+    moderator_ids_in_exercise.push(eachExercise.dataValues.moderated_by);
+  }
+  console.log("moderator ids in exercise: ", moderator_ids_in_exercise);
+
+  let moderatorDetails = await Moderator.findAll({
+    where: {},
+  });
+  for (let eachModerator of moderatorDetails) {
+    moderator_ids_in_moderator.push(eachModerator.dataValues.moderator_id);
+    moderator_status_in_moderator.push(eachModerator.dataValues.isAdmin);
+  }
+  console.log("moderator ids in moderator: ", moderator_ids_in_moderator);
+  for(let i=0;i<moderator_ids_in_moderator.length;i++){
+    for(let j=0;j<moderator_ids_in_exercise.length;j++){
+      if(moderator_ids_in_moderator[i] === moderator_ids_in_exercise[j]){
+        temp_count++;
+      }
+    }
+    console.log("temp_count: ",temp_count);
+    if(temp_count < assignment_count && moderator_ids_in_moderator[i] !== moderator_id && moderator_status_in_moderator[i] === false){
+      assignment_count = temp_count;
+      selected_moderator_for_review = moderator_ids_in_moderator[i];
+      console.log("selected_moderator_for_review: ",selected_moderator_for_review, assignment_count);
+    }
+    temp_count = 0;
+  }
+
+  console.log("selected_moderator_for_review: ", selected_moderator_for_review);
+
   if (type === "sentenceshuffling") {
     let correct = req.body.correct;
     let correctSentences = correct.split("#");
@@ -37,6 +93,7 @@ const insert = async (req, res) => {
         description: description,
         moderator_id: moderator_id,
         tutorial_id: tutorial_id,
+        moderated_by: selected_moderator_for_review,
       })
       .then((result_exercise) => {
         exercise_id_reference = result_exercise.dataValues.exercise_id;
@@ -107,6 +164,7 @@ const insert = async (req, res) => {
         description: description,
         moderator_id: moderator_id,
         tutorial_id: tutorial_id,
+        moderated_by: selected_moderator_for_review,
       })
       .then((result_exercise) => {
         exercise_id_reference = result_exercise.dataValues.exercise_id;
@@ -179,6 +237,7 @@ const insert = async (req, res) => {
         description: description,
         moderator_id: moderator_id,
         tutorial_id: tutorial_id,
+        moderated_by: selected_moderator_for_review,
       })
       .then((result_exercise) => {
         console.log("In categorize exercise then" + result_exercise);
@@ -271,6 +330,7 @@ const insert = async (req, res) => {
         description: description,
         moderator_id: moderator_id,
         tutorial_id: tutorial_id,
+        moderated_by: selected_moderator_for_review,
       })
       .then((result_exercise) => {
 
@@ -330,6 +390,7 @@ const insert = async (req, res) => {
   }
   else if(type === "fillgaps"){
     let passage = req.body.passage;
+    console.log(passage);
     let answers = []
     const txt = passage;
     const regExp = /\(([^)]+)\)/g;
@@ -350,6 +411,7 @@ const insert = async (req, res) => {
         description: description,
         moderator_id: moderator_id,
         tutorial_id: tutorial_id,
+        moderated_by: selected_moderator_for_review,
       })
       .then((result_exercise) => {
         exercise_id_reference = result_exercise.dataValues.exercise_id;
