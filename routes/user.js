@@ -30,6 +30,7 @@ const EntryTestSubmission = require("../controllers/student/entryTestSubmit");
 const setSuggestedLevel = require("../controllers/student/setSuggestedLevel");
 const getStats = require("../controllers/student/getStats");
 const setAcheivement = require("../controllers/student/setTopicHistory");
+const getAcheivement = require("../controllers/student/getTopicHistory");
 
 router.get("/user/info", auth, (req, res) => {
   userInfo(req, res);
@@ -114,5 +115,8 @@ router.get("/user/getStats", auth, profileAuth, (req, res) => {
 });
 router.post("/user/setAchievement", auth, profileAuth, (req, res) => {
   setAcheivement(req, res);
+});
+router.get("/user/getAchievement", auth, profileAuth, (req, res) => {
+  getAcheivement(req, res);
 });
 module.exports = router;
