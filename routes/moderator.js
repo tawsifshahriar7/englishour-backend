@@ -21,10 +21,15 @@ const UpdateStatus = require("../controllers/moderator/approveExercise");
 const ModStats = require("../controllers/moderator/getModStats");
 const UpdateLevel = require("../controllers/moderator/updateLevel");
 const GraphChart = require("../controllers/moderator/graphChart");
+const AllGraphs = require("../controllers/moderator/allGraphs");
+
 const ConsecutiveDetails = require("../controllers/moderator/exerciseDetails");
 const TreeView  = require("../controllers/moderator/TreeView");
 const TopicStats = require("../controllers/moderator/getTopicStats");
 const insertFromFile = require("../controllers/moderator/insertFromFile");
+
+const SetCategory = require("../controllers/moderator/setCategory");
+
 
 
 router.post("/moderator/insert", auth, insert);
@@ -46,9 +51,15 @@ router.post("/moderator/approveExercise", auth, UpdateStatus);
 router.get("/moderator/getModStats", auth, ModStats);
 router.post("/moderator/updateLevel", auth, UpdateLevel);
 router.get("/moderator/graphChart", auth, GraphChart);
+router.get("/moderator/allGraphs", auth, AllGraphs);
+
 router.get("/moderator/getConsecutiveDetails", auth, ConsecutiveDetails);
 router.get("/moderator/getTreeView", auth, TreeView);
 router.get("/moderator/getTopicStats", auth, TopicStats);
 router.post("/moderator/insertFromFile", auth, insertFromFile);
+
+
+router.post("/moderator/setCategory", auth, SetCategory);
+
 
 module.exports = router;

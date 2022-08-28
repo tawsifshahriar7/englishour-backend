@@ -16,6 +16,7 @@ const selectProfile = require("../controllers/student/selectProfile");
 const getTutorial = require("../controllers/student/getTutorial");
 const updateProfile = require("../controllers/student/profileUpdate");
 const groupwords = require("../controllers/student/groupwords");
+const readcomplete = require("../controllers/student/readcomplete");
 const changePassword = require("../controllers/student/passwordChange");
 const viewSecretQuestion = require("../controllers/student/viewSecretQuestion");
 const getExerciseList = require("../controllers/student/getExerciseList");

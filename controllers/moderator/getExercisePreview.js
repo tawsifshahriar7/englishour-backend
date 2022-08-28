@@ -7,6 +7,7 @@ const words = require("../../model/words");
 const fillinthegaps = require("../../model/FillInTheGaps");
 const gaps = require("../../model/Gaps");
 const sentenceshuffle = require("../../model/sentenceshuffle");
+const ReadComplete = require("../../model/readcomplete");
 const status_codes = require("../../utils/status_code/status_code");
 
 const ExerciseDetails = async (req, res) => {
@@ -121,6 +122,38 @@ const ExerciseDetails = async (req, res) => {
         }
         console.log(clues);
         return res.status(status_codes.SUCCESS).send(clues);
+    }
+
+    else if(exercise_type="readcomplete")
+    {
+        //get the description of the exercise
+        let ExerciseDesc = await Exercise.findOne({
+            where: { exercise_id: exercise_id },
+        });
+
+        let desc = ExerciseDesc.dataValues.description;
+        console.log("desc"+desc);
+        //find the item from item table
+        let Item = await item.findOne({
+            where: { exercise_id: exercise_id },
+        });
+
+        //find other attributes from ReadComplete table
+        let readComplete = await ReadComplete.findOne({
+            where: { item_id: Item.dataValues.item_id },
+        });
+
+        let finalDesc = {
+            description: desc,
+            nrows: readComplete.dataValues.nrows,
+            ncols: readComplete.dataValues.ncols,
+            sentence_list: readComplete.dataValues.sentence_list,
+            table: readComplete.dataValues.table,
+        };
+
+        console.log(finalDesc);
+
+        return res.status(status_codes.SUCCESS).send(finalDesc);
     }
 };
 
