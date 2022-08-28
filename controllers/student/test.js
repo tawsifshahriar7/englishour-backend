@@ -4,7 +4,7 @@ const Profile = require("../../model/profile");
 const status_codes = require("../../utils/status_code/status_code");
 
 const getTestQuestions = async (req, res) => {
-  const profile_id = parseInt(req.Profile.profile_id);
+  const profile_id = parseInt(req.profile.profile_id);
   Profile.findOne({
     attributes: ["current_level"],
     where: { profile_id: profile_id },
@@ -12,12 +12,15 @@ const getTestQuestions = async (req, res) => {
     .then((level_data) => {
       const level = level_data.dataValues.current_level;
       Exercise.findAll({
-        attributes: ["exercise_id"],
+        attributes: ["exercise_id", "exercise_type"],
         where: { level: level },
       })
         .then((exercises) => {
           const exercise_ids = exercises.map((exercise) => {
-            return exercise.dataValues.exercise_id;
+            return {
+              exercise_id: exercise.dataValues.exercise_id,
+              exercise_type: exercise.dataValues.exercise_type,
+            };
           });
           const shuffled = exercise_ids.sort(() => 0.5 - Math.random());
           const sliced = shuffled.slice(0, 10);

@@ -4,6 +4,8 @@ const Tutorial  = require("../../model/tutorial");
 const Topic = require("../../model/topic");
 const Category = require("../../model/category");
 const status_codes = require("../../utils/status_code/status_code");
+const { Op } = require('sequelize');
+
 
 const TreeView = async (req, res) => {
     console.log("in Tree View!")
@@ -23,12 +25,11 @@ const TreeView = async (req, res) => {
         attributes: ['tutorial_id', 'tutorial_title', 'topic_id'],
     });
 
-    //get all exercises that are approved
+    //get all exercises that are not declined
     let exercises = await Exercise.findAll({
         where: {
-            //for testing purposes,  get exercises that are pending
-            approval_status: "approved",	
-            //approval_status: "approved",
+            // [Op.or]: [{approval_status: "pending"}, {approval_status: "approved"}]
+            approval_status: "approved",
         },
         attributes: ['exercise_id', 'exercise_type', 'tutorial_id', "level"],
     });

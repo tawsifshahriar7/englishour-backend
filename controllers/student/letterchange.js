@@ -16,6 +16,7 @@ const letterchange = async (req, res) => {
       where: {
         item_id: items[i].dataValues.item_id,
       },
+      order: [["item_id", "ASC"]],
     });
     letterchanges.push(letterchange);
   }

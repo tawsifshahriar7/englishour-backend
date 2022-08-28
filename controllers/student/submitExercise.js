@@ -3,9 +3,10 @@ const status_codes = require("../../utils/status_code/status_code");
 const Exercise = require("../../model/exercise");
 const Item = require("../../model/item");
 const LetterChange = require("../../model/letterchange");
-const FillInTheGaps = require("../../model/fillinthegaps");
+const FillInTheGaps = require("../../model/FillInTheGaps");
 const SentenceShuffle = require("../../model/sentenceshuffle");
 const GroupWords = require("../../model/groupwords");
+const ReadComplete = require("../../model/readcomplete");
 const Words = require("../../model/words");
 const History = require("../../model/history");
 
@@ -31,6 +32,7 @@ const verify = async (req, res) => {
         where: {
           item_id: items[i].dataValues.item_id,
         },
+        order: [["item_id", "ASC"]],
       });
       let history = await History.findOne({
         where: {
@@ -38,6 +40,7 @@ const verify = async (req, res) => {
           profile_id: req.profile.profile_id,
         },
       });
+      console.log(submitted_answer[i]);
       submitted_answer[i] = submitted_answer[i].toLowerCase();
       if (letterchange[0].dataValues.answer === submitted_answer[i]) {
         result.push(true);
@@ -92,11 +95,10 @@ const verify = async (req, res) => {
     //  console.log("aschi ami");
     //  console.log(submitted_answer);
 
+    console.log(submitted_answer);
 
-   console.log(submitted_answer);
- 
-   let count=0;
-   
+    let count = 0;
+
     for (let i = 0; i < submitted_answer.submission.length; i++) {
       let text = submitted_answer.submission[i];
       const myArray = text.split("#");
@@ -182,7 +184,6 @@ const verify = async (req, res) => {
           item_id: items[i].dataValues.item_id,
         },
       });
-      submitted_answer[i] = submitted_answer[i].toLowerCase();
       let response = {};
       response.correct_sentence =
         sentenceshuffle[0].dataValues.correct_sentence;
@@ -254,7 +255,7 @@ const verify = async (req, res) => {
       });
 
       for (let j = 0; j < groupwords.length; j++) {
-        let words = Words.findAll({
+        let words = await Words.findAll({
           where: {
             item_id: groupwords[j].dataValues.item_id,
           },
@@ -267,6 +268,7 @@ const verify = async (req, res) => {
         }
       }
     }
+    // console.log(correct_grouping);
     result = [];
     for (let i = 0; i < submitted_answer.length; i++) {
       for (let j = 0; j < correct_grouping.length; j++) {
@@ -286,7 +288,151 @@ const verify = async (req, res) => {
         count++;
       }
     }
+
     let result_status = count === result.length ? true : false;
+    // Add to History
+    for (let i = 0; i < items.length; i++) {
+      let history = await History.findOne({
+        where: {
+          item_id: items[i].dataValues.item_id,
+          profile_id: req.profile.profile_id,
+        },
+      });
+      if (result_status === true) {
+        if (history === null) {
+          await History.create({
+            item_id: items[i].dataValues.item_id,
+            profile_id: req.profile.profile_id,
+            status: "solved",
+            nattempts: 1,
+          });
+        } else {
+          await History.update(
+            {
+              status: "solved",
+              nattempts: history.dataValues.nattempts + 1,
+            },
+            {
+              where: {
+                item_id: items[i].dataValues.item_id,
+                profile_id: req.profile.profile_id,
+              },
+            }
+          );
+        }
+      } else {
+        if (history === null) {
+          await History.create({
+            item_id: items[i].dataValues.item_id,
+            profile_id: req.profile.profile_id,
+            status: "failed",
+            nattempts: 1,
+          });
+        } else {
+          await History.update(
+            {
+              status: "failed",
+              nattempts: history.dataValues.nattempts + 1,
+            },
+            {
+              where: {
+                item_id: items[i].dataValues.item_id,
+                profile_id: req.profile.profile_id,
+              },
+            }
+          );
+        }
+      }
+    }
+    return res.status(status_codes.SUCCESS).send(result_status);
+  } else if (exercise.dataValues.exercise_type === "readcomplete") {
+    let result = [];
+    for (let i = 0; i < items.length; i++) {
+      let readcomplete = await ReadComplete.findAll({
+        where: {
+          item_id: items[i].dataValues.item_id,
+        },
+      });
+
+      let table = [];
+
+      Object.keys(readcomplete[0].dataValues.table).forEach((key) => {
+        table.push(readcomplete[0].dataValues.table[key]);
+      });
+
+      table.slice(1).map((row, row_index) => {
+        row.map((cell, col_index) => {
+          if (cell === submitted_answer[row_index][col_index]) {
+            result.push(true);
+          } else {
+            result.push(false);
+          }
+        });
+      });
+    }
+
+    let count = 0;
+    for (let i = 0; i < result.length; i++) {
+      if (result[i] === true) {
+        count++;
+      }
+    }
+    let result_status = count === result.length ? true : false;
+
+    // Add to History
+    for (let i = 0; i < items.length; i++) {
+      let history = await History.findOne({
+        where: {
+          item_id: items[i].dataValues.item_id,
+          profile_id: req.profile.profile_id,
+        },
+      });
+      if (result_status === true) {
+        if (history === null) {
+          await History.create({
+            item_id: items[i].dataValues.item_id,
+            profile_id: req.profile.profile_id,
+            status: "solved",
+            nattempts: 1,
+          });
+        } else {
+          await History.update(
+            {
+              status: "solved",
+              nattempts: history.dataValues.nattempts + 1,
+            },
+            {
+              where: {
+                item_id: items[i].dataValues.item_id,
+                profile_id: req.profile.profile_id,
+              },
+            }
+          );
+        }
+      } else {
+        if (history === null) {
+          await History.create({
+            item_id: items[i].dataValues.item_id,
+            profile_id: req.profile.profile_id,
+            status: "failed",
+            nattempts: 1,
+          });
+        } else {
+          await History.update(
+            {
+              status: "failed",
+              nattempts: history.dataValues.nattempts + 1,
+            },
+            {
+              where: {
+                item_id: items[i].dataValues.item_id,
+                profile_id: req.profile.profile_id,
+              },
+            }
+          );
+        }
+      }
+    }
     return res.status(status_codes.SUCCESS).send(result_status);
   }
 };

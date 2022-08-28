@@ -1,29 +1,26 @@
 # What are Verbs?
+
 Verbs are words that show action or state-of-being. Every sentence requires a verb.
 
 Action verbs show action or ownership; whereas, state-of-being verbs renames the subject
 
-<br>
 
 # Definitions of Verbs With Examples
 
-![partofspeech](images/verb.png)
+![partofspeech](http://localhost:8080/images/verb.png)
 
-<br>
 
 - Jimmy rode his new bike to school. (Action Verb)
 - Jimmy is the most popular boy in school. (State-of-being Verb)
 - Mary gave her money to charity. (Action Verb)
 - Mary is very generous with her money. (State-of-being Verb)
 
-<br>
 
 # Types of Verbs With Examples
 
 Verbs have two functions. They can function as transitive verbs or intransitive verbs.
 
 Transitive verbs carry action from the doer to the receiver; whereas, intransitive verbs do not carry the action to the receiver.
-
 
 - Reverend David writes sermons for his congregation. (Transitive Verb)
 - Reverend David spoke elegantly during his sermon. (Intransitive Verb)
@@ -35,8 +32,9 @@ Transitive verbs carry action from the doer to the receiver; whereas, intransiti
 - Jimmy ran across the field to avoid the other players. (Intransitive Verb)
 
 # Types of Verb Tenses
-Verbs have three tenses: 
--
+
+## Verbs have three tenses:
+
     1. Past
     2. Present
     3. Future

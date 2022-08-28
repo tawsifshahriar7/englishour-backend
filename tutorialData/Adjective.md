@@ -1,34 +1,32 @@
 # What are Adjectives?
+
 Adjectives are words that modify or describe nouns or pronouns.
 
-<br>
+
 
 # Adjectives With Examples
 
-![partofspeech](images/adj.png)
+![partofspeech](http://localhost:8080/images/adj.png)
 
 - Rebekah painted a beautiful landscape. (Adjective Modifying Noun)
 - She is generous. (Adjective Describing Pronoun)
 
-<br>
+
 
 # Types of Adjectives With Examples
 
- There are generally 8 types of adjectives.
- 
-  1. proper
-  2. descriptive
-  3. interrogative
-  4. possessive
-  5. numeral
-  6. demonstrative
-  7. distributive
-  8. quantitative.
+There are generally 8 types of adjectives.
 
-![partofspeech](images/adj2.jpg)
+1. proper
+2. descriptive
+3. interrogative
+4. possessive
+5. numeral
+6. demonstrative
+7. distributive
+8. quantitative.
 
-<br>
-
+![partofspeech](http://localhost:8080/images/adj2.jpg)
 
 
 - English grammar is learned at school. (Proper Adjective)
