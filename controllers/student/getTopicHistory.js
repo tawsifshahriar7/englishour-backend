@@ -11,7 +11,7 @@ const getTopicHistory = async (req, res) => {
       profile_id: profile_id,
     },
   });
-  topicList = [];
+  let topicList = [];
   for (let i = 0; i < topics.length; i++) {
     const topic = await Topic.findOne({
       where: {
